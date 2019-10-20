@@ -1,0 +1,130 @@
+.theme__login{
+    width:100%;
+    display: block;
+    overflow: hidden;
+}
+header{
+    height: auto;
+    overflow: hidden;
+}
+
+.video{
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    right:0;
+    bottom:0;
+    width: auto;
+}
+
+.box{
+    width:360px;
+    background:#000;
+    opacity: .88;
+    height:520px;
+    padding:80px 40px;
+    box-sizing: border-box;
+    border-radius:10px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.box .login__title{
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color:#fff;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.box .txtb{
+    border-bottom:2px solid #adadad;
+    position: relative;
+    margin:30px 0;
+}
+
+.txtb input{
+    font-family: 'Roboto Condensed', sans-serif;
+    color:#f2f2f2;
+    font-size:1rem;
+    border:none;
+    width:100%;
+    outline:none;
+    background:none;
+    padding:0 5px;
+    height: 40px;
+}
+
+.txtb span::after{
+    content:'';
+    position: absolute;
+    display: block;
+    width:0%;   
+    height: 2px;
+    background:linear-gradient(120deg,#152038,#3498db);
+    transition: .5s;
+}
+
+.txtb span::before{
+    content:attr(data-placeholder);
+    position: absolute;
+    top:50%;
+    left:5px;
+    color:#aaa;
+    font-family: 'Roboto Condensed', sans-serif;
+    transform:translateY(-50%);
+    z-index: -1;
+    transition:.5s;
+}
+
+
+.focus + span::before{
+    top:-5px;
+}
+
+.focus + span::after{
+    width:100%;
+}
+
+.box .btn__customized:hover{
+    background-position:right;
+}
+.box .btn__customized{
+    transition: .5s;
+    width:100%;
+    font-size:1rem;
+    font-family:'Roboto Condensed', sans-serif;
+    color:#fff;
+    padding:12px 8px;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    background:linear-gradient(120deg, #152038,#3498db,#152038);
+    background-size:200%;
+}
+
+.box .txt__bottom{
+    text-align: justify;
+    margin-top:40px;
+}
+
+.box  p{
+    font-family:'Roboto Condensed', sans-serif;
+    font-weight: bold;;
+    font-size:13px;
+    color:#aaa;
+}
+
+.box .text__link{
+    font-size:12px;
+    color:#fff;
+    transition: .3s;
+}
+
+.box .text__link:hover{
+    color:rgb(0, 153, 255);
+}

@@ -1,0 +1,186 @@
+
+/* MEDIAS QUERYS */
+
+#header{
+    position:relative;
+    background:linear-gradient(to left, rgba(0,0,0,0.8),rgba(0,0,0,0.2)),url('../../img/slide1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height:600px; 
+}
+
+#header a.nav-link{
+    color:#fff;
+    text-transform:uppercase;
+    font-size:1rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 4px;
+    transition:.5s;
+}
+
+#header a.nav-link::after{
+    content:'';
+    display:inline-block; 
+    width:4px;
+    height:12px;
+    margin: 0 6px;
+    background: #fff;
+}
+
+#header li:last-child a.nav-link:after{
+    width:0;
+}
+
+#header a.nav-link:hover{
+    transform:translateY(12px);
+    color:#20B2AA;
+}
+
+#header .navbar-brand{
+    color:transparent;
+    background: url('../../img/logo-topo.svg');
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position:center;
+    width:80px;
+    height:80px;
+    display:table;
+    transition:.5s;
+    line-height:54px;
+    padding:0.7rem 0.7rem;
+    font-weight: 700;
+}
+
+/* 
+#header .efect{
+    animation-name: anime;
+    animation-iteration-count: 1;
+    animation-duration: 4s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-delay: 0.5s;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 2px;
+} */
+
+#header .navbar-toggler{
+    transition:.25s;
+    background:#bbd8d7;
+    outline:none;
+    cursor:pointer;
+}
+
+#header .h__search{
+    position:relative;
+    width:430px;
+    padding:0.9rem 2rem 0.9rem 3rem;
+    outline:none;
+    border-radius:20px;
+    color:#000;
+    border:none;
+    margin:0 1.5rem 0 0;
+    font-size:1rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    letter-spacing: 1px;
+}
+
+#header .h__icon{
+    z-index: 2;
+    padding: 10px 7px;
+    position: absolute;
+    top: 25px;
+    text-align: center;
+    right: 485px;
+    display: table;
+    height: auto;
+    width: 50px;
+}
+
+#header .h__icon button{
+    border:none;
+    background:none;
+    outline:none;
+    cursor: pointer;
+}
+#header .h__icon .fas:hover{
+    color:#152038;
+}
+#header .h__icon .fas{
+    transition:.25s;
+    display:inline-block;
+    font-size:1.57rem;
+    color:#3498db;
+}
+
+#header .btn.btn-primary:hover{background-position:right; }
+#header .btn.btn-primary{
+    transition:.3s ease-in;
+    border:none;
+    box-shadow:none;
+    position: absolute;
+    top: 24px;
+    width: 137px;
+    right: 104px;
+    border-radius: 20px;
+    padding: 12.3px;
+    outline:none;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-family: 'Roboto Condensed', sans-serif;
+    background:linear-gradient(120deg, #152038,#3498db,#152038);
+     background-size:200%
+}
+#header .h__list{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+#header .avatar__img{
+    position:relative;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:url('../../img/boy.svg');
+    background-repeat:no-repeat;
+    background-size:65%;
+    background-position:center;
+    border:2px solid #fff;
+    transition:.25s;
+    z-index:1;
+    overflow: hidden;
+}
+
+#header .overlay{
+    position:absolute;
+    left:0;
+    top:100%;
+    z-index: 1;
+    display:block;
+    width:100%;
+    height:100%;
+    background:url('../../img/student.svg');
+    background-repeat:no-repeat;
+    background-size:65%; 
+    background-position:center;
+    border-radius:50%;
+    transition:.25s;
+}
+#header .avatar__img:hover{
+    background: none;
+}
+
+#header .avatar__img:hover .overlay{
+    top:0;
+}
+
+
+#header .avatar__img:hover{
+    cursor:pointer;
+    /* transform:translateY(-100%); */
+}
+
+

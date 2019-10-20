@@ -1,0 +1,5 @@
+module.exports = (app) => {
+    app.use('/', require('./controllers/home/index'))
+    // app.use('/seach', require('./controllers/busca/index'))
+    app.use('/user/login', require('./controllers/user/index'))
+}
