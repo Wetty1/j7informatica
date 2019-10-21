@@ -37,7 +37,7 @@ mongoose.connect('mongodb+srv://user:user@cluster0-0v0b4.mongodb.net/j7info?retr
     useUnifiedTopology: true
 }).then(() => console.log("deu bom")).catch(error => console.log("deu ruim!"))
 
-const PORT = 3002
+const PORT = 3000
 app.listen(PORT, () => {
     console.log("http://localhost:"+PORT)
 })
