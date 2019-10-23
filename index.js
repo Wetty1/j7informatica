@@ -20,6 +20,7 @@ app.use(session({
     saveUninitialized: true
 }))
 
+require('./src/auth/local')(passport)
 //app passport
 app.use(passport.initialize())
 app.use(passport.session())
@@ -29,7 +30,8 @@ app.engine('handlebars', hbs())
 app.set('views', path.join(__dirname, 'src/views'))
 app.set('view engine', 'handlebars')
 
-require('./src/routes')(app)
+require('./src/auth/middleware')
+require('./src/routes')(app, passport)
 
 //mongoose
 mongoose.connect('mongodb+srv://user:user@cluster0-0v0b4.mongodb.net/j7info?retryWrites=true&w=majority', {
