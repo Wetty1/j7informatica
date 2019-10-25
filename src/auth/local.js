@@ -48,13 +48,14 @@ module.exports = (passport) => {
 
     }))
 
-    passport.use('local-signin', new LocalStrategy({
-        usernameField: 'username',
+    passport.use('local-singin', new LocalStrategy({
+        usernameField: 'email',
         passwordField: 'password',
         passReqToCallback: true
     },
     function (req, username, password, cb) {
         User.findOne({username}).then((user) => {
+            console.log(username)
             if(!user){
                 console.log('Não encontrado')
                 return cb(null, false)
@@ -67,6 +68,9 @@ module.exports = (passport) => {
                 console.log("logado")
                 return cb(null, user)
             })
+        }).catch((error) => {
+            console.log(error)
+            return cb(null, false)
         })
     }))
 }

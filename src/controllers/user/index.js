@@ -12,8 +12,8 @@ module.exports = (passport) =>  {
     })
 
     router.post('/login', passport.authenticate('local-singin', {
-        successRedirect: './..',
-        failureRedirect: './',
+        successRedirect: '/',
+        failureRedirect: './login',
     }))
 
     router.get('/register', (req,res) => {
@@ -22,7 +22,7 @@ module.exports = (passport) =>  {
 
     router.post('/register', passport.authenticate('local-singup', {
         successRedirect: '/',
-        failureRedirect: '/user/register'
+        failureRedirect: '/user/login'
     }))
 
     return router
