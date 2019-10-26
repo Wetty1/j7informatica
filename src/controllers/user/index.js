@@ -1,13 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
-
 module.exports = (passport) =>  { 
     router.get('/', (req, res) => {
         console.log('deu bom')
     })
 
     router.get('/login', (req, res) => {
+        if(req.isAuthenticated()){
+            res.redirect('/')
+        }
         res.render('auth/login')
     })
 

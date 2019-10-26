@@ -29,7 +29,7 @@
                     </span> 
                 </div>
             </li>
-
+            
             <li>
                 <a href="/user/login">
                     <div class="avatar__img" id="logar">
@@ -41,6 +41,17 @@
 
         </ul>
     </nav>
+    <div>
+        {{#if user}}
+            <li>
+                <h2 style="color:white">{{user}}</h2>
+            </li>
+        {{else}}
+            <li>
+                <h2 style="color:white">Não logado!</h2>
+            </li>
+        {{/if}}
+    </div>
     
 </header>
 

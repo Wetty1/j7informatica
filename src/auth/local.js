@@ -1,5 +1,4 @@
 const LocalStrategy = require('passport-local')
-const mongoose = require('mongoose')
 const User = require('./../models/User')
 
 module.exports = (passport) => {
@@ -45,7 +44,6 @@ module.exports = (passport) => {
         }).catch((error) => {
             return cb(error, false)
         })
-
     }))
 
     passport.use('local-singin', new LocalStrategy({
@@ -53,9 +51,9 @@ module.exports = (passport) => {
         passwordField: 'password',
         passReqToCallback: true
     },
-    function (req, username, password, cb) {
-        User.findOne({username}).then((user) => {
-            console.log(username)
+    function (req, nome, password, cb) {
+        User.findOne({email: nome}).then((user) => {
+            console.log(nome)
             if(!user){
                 console.log('Não encontrado')
                 return cb(null, false)
@@ -65,7 +63,7 @@ module.exports = (passport) => {
                     console.error('erro na senha!')
                     return cb(null, false)
                 }
-                console.log("logado")
+                console.log('username:', user)
                 return cb(null, user)
             })
         }).catch((error) => {
