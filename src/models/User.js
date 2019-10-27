@@ -14,7 +14,11 @@ const User = mongoose.Schema({
     senha: {
         type: String,
         required: true,
-    }
+    },
+    nivel: {
+        type: Number,
+        required: true,
+    },
 })
 
 User.methods.genHash = (senha) => {

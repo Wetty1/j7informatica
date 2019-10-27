@@ -24,13 +24,12 @@ module.exports = (passport) =>  {
     })
 
     router.post('/register', passport.authenticate('local-singup', {
-        successRedirect: '/',
+        successRedirect: '/user/login',
         failureRedirect: '/user/login'
     }))
 
     router.get('/logout', (req, res) => {
         req.logout()
-
         return res.redirect('/')
     })
 
