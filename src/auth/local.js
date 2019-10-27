@@ -10,7 +10,6 @@ module.exports = (passport) => {
         User.findById(id)
         .then(user => cb(null, user))
         .catch(error => cb(error, {}))
-        return cb(null, id)
     })
 
     passport.use('local-singup', new LocalStrategy({
@@ -53,7 +52,6 @@ module.exports = (passport) => {
     },
     function (req, nome, password, cb) {
         User.findOne({email: nome}).then((user) => {
-            console.log(nome)
             if(!user){
                 console.log('Não encontrado')
                 return cb(null, false)
@@ -63,7 +61,6 @@ module.exports = (passport) => {
                     console.error('erro na senha!')
                     return cb(null, false)
                 }
-                console.log('username:', user)
                 return cb(null, user)
             })
         }).catch((error) => {

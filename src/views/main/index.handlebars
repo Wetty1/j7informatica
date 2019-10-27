@@ -45,6 +45,9 @@
         {{#if user}}
             <li>
                 <h2 style="color:white">{{user}}</h2>
+                <form action="/user/logout">
+                    <button type="submit" class="btn btn-danger">Sair</button>
+                </form>
             </li>
         {{else}}
             <li>

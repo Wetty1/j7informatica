@@ -9,6 +9,7 @@ module.exports = (passport) =>  {
     router.get('/login', (req, res) => {
         if(req.isAuthenticated()){
             res.redirect('/')
+            return;
         }
         res.render('auth/login')
     })
@@ -26,6 +27,12 @@ module.exports = (passport) =>  {
         successRedirect: '/',
         failureRedirect: '/user/login'
     }))
+
+    router.get('/logout', (req, res) => {
+        req.logout()
+
+        return res.redirect('/')
+    })
 
     return router
 }
