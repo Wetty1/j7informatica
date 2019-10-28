@@ -37,7 +37,7 @@ require('./src/routes')(app, passport)
 mongoose.connect('mongodb+srv://user:user@cluster0-0v0b4.mongodb.net/j7info?retryWrites=true&w=majority', {
     useNewUrlParser: true, 
     useUnifiedTopology: true
-}).then(() => console.log("deu bom")).catch(error => console.log("deu ruim!"))
+}).then(() => console.log("deu bom")).catch(error => console.log(error))
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {

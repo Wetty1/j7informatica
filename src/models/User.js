@@ -17,7 +17,7 @@ const User = mongoose.Schema({
     },
     nivel: {
         type: Number,
-        required: true,
+        required: false,
     },
 })
 

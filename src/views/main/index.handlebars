@@ -45,6 +45,12 @@
         {{#if user}}
             <li>
                 <h2 style="color:white">{{user}}</h2>
+                {{#if admin}}
+                    <input type="hidden" name="{{admin}}">
+                    <form action="/admin/produto">
+                        <button type="submit" class="btn btn-secundary">Painel</button>
+                    </form>
+                {{/if}}
                 <form action="/user/logout">
                     <button type="submit" class="btn btn-danger">Sair</button>
                 </form>
