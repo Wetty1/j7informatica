@@ -12,6 +12,7 @@ const app = express()
 app.use(bodyParse.json())
 app.use(bodyParse.urlencoded({extended: false}))
 app.use('/public', express.static(__dirname+'/public'))
+app.use('/upload', express.static(__dirname+'/upload' ))
 
 //SESSION
 app.use(session({

@@ -1,20 +1,19 @@
 const express = require('express')
 const router = express.Router()
-    
-router.get('/produtos', (req, res) => {
-    res.render('admin/produtos')
-})
+const multer = require('multer')
+const uploadConfig = require('../../config/upload')
 
-router.get('/pedidos', (req, res) => {
-    res.render('admin/pedidos')
-})
+const Produtos = require('./produtos')
+const Pedidos = require('./pedidos')
 
-router.post('/produtos', (req, res) => {
-    res.render('admin/produto')
-})
+const upload = multer(uploadConfig)
 
-router.post('/pedidos', (req, res) => {
-    res.render('admin/pedidos')
-})
+router.get('/produtos', Produtos.all)
+
+router.get('/pedidos', Pedidos.all)
+
+router.post('/produtos', upload.single('thumbnail'), Produtos.store)
+
+router.post('/pedidos', Pedidos.store)
 
 module.exports = router
