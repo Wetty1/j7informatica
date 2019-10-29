@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
     
 router.get('/produtos', (req, res) => {
-    res.render('admin/produto')
+    res.render('admin/produtos')
 })
 
 router.get('/pedidos', (req, res) => {

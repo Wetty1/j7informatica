@@ -1,0 +1,60 @@
+<h1>Produtos</h1>
+<div class="form-control">
+    {{!-- Formulario para adcionar produto
+        ( Nome, Descrição, Valor )
+        "Ao criar o produto formará uma entrada e uma saida vazia"
+    --}}
+    <form action="/admin/addproduto" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label for="produto">Produto</label>
+                        <input name="produto" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="descricao">Valor</label>
+                        <input type="number" class="form-control" id="valor" placeholder="Valor">
+                    </div>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <input type="text" class="form-control" id="descricao" placeholder="Uma Breve descrição do produto">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="descricao">Imagem</label>
+                        <input type="file" class="form-control" id="imagem" placeholder="Uma Breve descrição do produto">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+<br>
+<hr>
+<br>
+<div class="container">
+    <div class="d-flex">
+        <div class="card d-flex">
+            <div class="card-body">
+                <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src="https://www.extra-imagens.com.br/Informatica/Computadores/13899830/1039411781/computador-completo-core-2-duo-4gb-hd-500gb-wifi-monitor-19-13899830.jpg" alt="..."><br>
+                <label>Produto: Computador i5</label><br>
+                <span>Valor: </span><span>R$ 1.500,00</span><br>
+                <button class="btn btn-success btn-block">Add Estoque</button><br>
+                <button class="btn btn-warning btn-block">Editar</button><br>
+                <button class="btn btn-danger btn-block">Excluir</button>
+            </div>
+        </div>
+    </div>
+</div>
