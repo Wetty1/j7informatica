@@ -10,6 +10,8 @@ module.exports = {
     async store (req, res) { 
         const { nome, descricao, valor } = req.body
 
+        console.log(nome, descricao, valor, req.file)
+
         await Produtos.create({
             nome: nome,
             descricao: descricao,

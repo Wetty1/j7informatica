@@ -10,10 +10,10 @@ const upload = multer(uploadConfig)
 
 router.get('/produtos', Produtos.all)
 
-router.get('/pedidos', Pedidos.all)
+// router.get('/pedidos', Pedidos.all)
 
-router.post('/produtos', upload.single('thumbnail'), Produtos.store)
+router.post('/addproduto', upload.single('thumbnail'), Produtos.store)
 
-router.post('/pedidos', Pedidos.store)
+// router.post('/pedidos', Pedidos.store)
 
 module.exports = router
