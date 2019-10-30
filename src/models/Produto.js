@@ -5,11 +5,11 @@ const Produto = mongoose.Schema({
         type: String,
         required: true
     },
-    decricao:{
+    descricao:{
         type: String,
         required: true
     },
-    preco:{
+    valor:{
         type: Number,
         required: true
     },

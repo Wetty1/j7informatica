@@ -9,17 +9,17 @@ module.exports = {
     },
     async store (req, res) { 
         const { nome, descricao, valor } = req.body
+        const { originalname } = req.file
 
-        console.log(nome, descricao, valor, req.file)
+        console.log("------------ ", nome, descricao, valor, originalname)
 
-        await Produtos.create({
+        await Produtos.create ({
             nome: nome,
             descricao: descricao,
             valor: valor,
-            thumbnail: req.file
-        })
-
-
+            thumbnail: originalname
+        }).catch(err => console.error(err))
+           
         return res.redirect('/admin/produtos')
     },
 } 
