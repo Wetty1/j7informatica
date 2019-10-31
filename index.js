@@ -12,8 +12,8 @@ const app = express()
 app.use(bodyParse.json())
 app.use(bodyParse.urlencoded({extended: false}))
 app.use('/public', express.static(__dirname+'/public'))
-app.use('/upload', express.static(__dirname+'/upload' ))
-
+app.use('/files', express.static( __dirname+'/uploads' ))
+console.log(__dirname+'/upload')
 //SESSION
 app.use(session({
     secret: '!@$#%@@#asd',

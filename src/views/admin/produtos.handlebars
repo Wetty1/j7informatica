@@ -48,14 +48,25 @@
 <div class="container">
     <div class="d-flex">
         <div class="card d-flex">
-            <div class="card-body">
-                <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src="https://www.extra-imagens.com.br/Informatica/Computadores/13899830/1039411781/computador-completo-core-2-duo-4gb-hd-500gb-wifi-monitor-19-13899830.jpg" alt="..."><br>
-                <label>Produto: Computador i5</label><br>
-                <span>Valor: </span><span>R$ 1.500,00</span><br>
-                <button class="btn btn-success btn-block">Add Estoque</button><br>
-                <button class="btn btn-warning btn-block">Editar</button><br>
-                <button class="btn btn-danger btn-block">Excluir</button>
-            </div>
+            {{#each produtos}}
+                <div class="card-body">
+                    <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src="./../../../files/{{thumbnail}}" alt="{{thumbnail}}"><br>
+                    <label>Produto: {{nome}} </label><br>
+                    <span>Valor: </span><span>{{valor}}</span><br>
+                    <button class="btn btn-success btn-block">Add Estoque</button><br>
+                    <button class="btn btn-warning btn-block">Editar</button><br>
+                    <button class="btn btn-danger btn-block">Excluir</button>
+                </div>
+            {{else}}
+                <div class="card-body">
+                    <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src="" alt="..."><br>
+                    <label>Produto: Computador i5</label><br>
+                    <span>Valor: </span><span>R$ 1.500,00</span><br>
+                    <button class="btn btn-success btn-block" disabled>Add Estoque</button><br>
+                    <button class="btn btn-warning btn-block" disabled>Editar</button><br>
+                    <button class="btn btn-danger btn-block" disabled>Excluir</button>
+                </div>
+            {{/each}}
         </div>
     </div>
 </div>
