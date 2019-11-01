@@ -16,11 +16,16 @@ const Produto = mongoose.Schema({
     thumbnail: {
         type: String,
         required: true
+    },
+    ativo: {
+        type: Boolean,
+        required: true,
+        default: true,
     }
 })
 
 Produto.virtual('thumbnail_url').get(function() {
-    return `http://localhost:3000/public/img/thumbnails/${this.thumbnail}`
+    return `http://localhost:3000/files/${this.thumbnail}`
 })
 
 module.exports = mongoose.model('produto', Produto)

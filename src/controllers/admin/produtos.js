@@ -25,10 +25,16 @@ module.exports = {
         return res.redirect('/admin/produtos')
     },
 
-    async delete (req, res) {
-        console.log('method: ', req.params)
+    async desativar (req, res) {
+        //console.log('method: ', req.params)
+        //await Produtos.findById(req.params.id)
         
-        await Produtos.findById(req.params.id).remove()
+        const prod = await Produtos.findById(req.params.id);
+
+        await Produtos.deleteOne({ _id: prod._id });
+
+        doc.ativo = false;
+        await doc.save(); 
 
         return res.redirect('/admin')
     },

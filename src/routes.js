@@ -1,3 +1,4 @@
+//isAdmin
 
 module.exports = (app, passport) => {
     app.use('/', require('./controllers/home/index'))

@@ -33,7 +33,8 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="imagem">Imagem</label>
-                        <input name="thumbnail" type="file" class="form-control" id="imagem" placeholder="Uma Breve descrição do produto" required>
+                        <input name="thumbnail" type="file" class="form-control" id="imagem" 
+                            placeholder="Uma Breve descrição do produto" accept="image/png, image/jpeg" max-size="32000" required>
                     </div>
                 </div>
             </div>
@@ -42,6 +43,16 @@
         </div>
     </form>
 </div>
+<script>
+    var uploadField = document.getElementById("file");
+
+    uploadField.onchange = function() {
+        if(this.files[0].size > 80000){
+            alert("File is too big!");
+            this.value = "";
+        };
+    };
+</script>
 <br>
 <hr>
 <br>
