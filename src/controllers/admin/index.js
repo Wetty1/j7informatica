@@ -20,12 +20,33 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage })
 
-router.get('/produtos', Produtos.all)
+router.get('/', (req, res) => res.redirect('/admin/produtos'))
+// // SUMARIO
+/* 
+LISTAGEM
+ADICIONAR
+DELETAR
+EDITAR 
+*/
 
+/* LISTAGEM */
+
+router.get('/produtos', Produtos.all)
 // router.get('/pedidos', Pedidos.all)
 
-router.post('/addproduto', upload.single('thumbnail'), Produtos.store)
+/* ADICIONAR */
 
+router.post('/addproduto', upload.single('thumbnail'), Produtos.store)
 // router.post('/pedidos', Pedidos.store)
+
+/* DELETAR */
+
+router.delete('/deleteproduto/:id', Produtos.delete)
+// router.delete()
+
+/* EDITAR */
+
+router.post('/produto', Produtos.all)
+router.put('/editproduto/:id', Produtos.edit)
 
 module.exports = router

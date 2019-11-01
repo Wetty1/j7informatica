@@ -5,15 +5,21 @@ const bodyParse = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
 const hbs = require('express-handlebars')
+const methodOverride = require('method-override')
 
 const app = express()
+
+//METHOD OVERRIDE
+app.use(methodOverride('_method'))
 
 //BODY PARSER
 app.use(bodyParse.json())
 app.use(bodyParse.urlencoded({extended: false}))
+
+//Pastas estáticas
 app.use('/public', express.static(__dirname+'/public'))
 app.use('/files', express.static( __dirname+'/uploads' ))
-console.log(__dirname+'/upload')
+
 //SESSION
 app.use(session({
     secret: '!@$#%@@#asd',

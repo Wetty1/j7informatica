@@ -3,10 +3,12 @@ const Produtos = require('./../../models/Produto')
 module.exports = {
     
     async all (req, res){
+        console.log(req.body)
         const produtos = await Produtos.find()
 
         return res.render('admin/produtos', {produtos: produtos})
     },
+
     async store (req, res) { 
         const { nome, descricao, valor } = req.body
         const { filename } = req.file
@@ -22,7 +24,17 @@ module.exports = {
            
         return res.redirect('/admin/produtos')
     },
+
     async delete (req, res) {
-        return res.redirect('/')
+        console.log('method: ', req.params)
+        
+        await Produtos.findById(req.params.id).remove()
+
+        return res.redirect('/admin')
+    },
+
+    async edit (req, res) {
+        console.log('method: ' )
+        return res.redirect('/admin')
     }
 } 

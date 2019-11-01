@@ -53,15 +53,22 @@
                     <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src="./../../../files/{{thumbnail}}" alt="{{thumbnail}}"><br>
                     <label>Produto: {{nome}} </label><br>
                     <span>Valor: </span><span>{{valor}}</span><br>
+                    <label>Descricao: {{descricao}} </label><br>
                     <button class="btn btn-success btn-block">Add Estoque</button><br>
-                    <button class="btn btn-warning btn-block">Editar</button><br>
-                    <button class="btn btn-danger btn-block">Excluir</button>
+                    <form method="post" action="/admin/editproduto/{{_id}}?_method=PUT">
+                        <input type="hidden" name="_method" value="PUT">
+                        <button class="btn btn-warning btn-block" type="submit">Editar</button><br>
+                    </form>
+                    <form method="post" action="/admin/deleteproduto/{{_id}}?_method=DELETE">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button class="btn btn-danger btn-block" type="submit">Excluir</button>
+                    </form>
                 </div>
             {{else}}
                 <div class="card-body">
                     <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src="" alt="..."><br>
-                    <label>Produto: Computador i5</label><br>
-                    <span>Valor: </span><span>R$ 1.500,00</span><br>
+                    <label>Produto: </label><br>
+                    <span>Valor: </span><span>R$ </span><br>
                     <button class="btn btn-success btn-block" disabled>Add Estoque</button><br>
                     <button class="btn btn-warning btn-block" disabled>Editar</button><br>
                     <button class="btn btn-danger btn-block" disabled>Excluir</button>
