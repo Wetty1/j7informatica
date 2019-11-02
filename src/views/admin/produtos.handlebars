@@ -11,7 +11,7 @@
                 <div class="col-8">
                     <div class="form-group">
                         <label for="produto">Produto</label>
-                        <input name="nome" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                        <input name="nome" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nome do produto" required>
                     </div>
                 </div>
                 <div class="col">
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-success">Criar produto</button>
         </div>
     </form>
 </div>
@@ -65,24 +65,90 @@
                     <label>Produto: {{nome}} </label><br>
                     <span>Valor: </span><span>{{valor}}</span><br>
                     <label>Descricao: {{descricao}} </label><br>
+                    {{#unless ativo}} <label style="color: red;">Desativado</label><br> {{/unless}}
                     <button class="btn btn-success btn-block">Add Estoque</button><br>
-                    <form method="post" action="/admin/editproduto/{{_id}}?_method=PUT">
+                    <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#modal-{{_id}}">Editar</button><br>
+                    <form method="post" action="/admin/desativarproduto/{{_id}}?_method=PUT">
                         <input type="hidden" name="_method" value="PUT">
-                        <button class="btn btn-warning btn-block" type="submit">Editar</button><br>
+                        <button class="btn btn-danger btn-block" type="submit">Desativar</button>
                     </form>
-                    <form method="post" action="/admin/deleteproduto/{{_id}}?_method=DELETE">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button class="btn btn-danger btn-block" type="submit">Excluir</button>
-                    </form>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modal-{{_id}}" tabindex="-1" role="dialog" aria-labelledby="ModalEdite" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form method="post" action="/admin/editproduto/{{_id}}?_method=PUT" enctype="multipart/form-data">
+                            <input type="hidden" name="_method" value="PUT">    
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Editar Produto</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <div class="form-group">
+                                                <label for="produto">Produto</label>
+                                                <input name="nome" type="text" class="form-control" id="produto-{{_id}}" value="{{nome}}" aria-describedby="emailHelp" placeholder="Nome do produto" required>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="descricao">Valor</label>
+                                                <input name="valor" type="number" class="form-control" id="valor-{{_id}}" value="{{valor}}" placeholder="Valor" required>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="descricao">Descrição</label>
+                                                <input name="descricao" type="text" class="form-control" id="descricao-{{_id}}" value="{{descricao}}" placeholder="Uma Breve descrição do produto" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="imagem">Imagem</label>
+                                                <input name="thumbnail" type="file" class="form-control" id="imageme" 
+                                                    placeholder="Uma Breve descrição do produto" accept="image/png, image/jpeg" max-size="32000">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                           <div class="form-group form-check ml-3">
+                                                <input name="ativo" type="checkbox" class="form-check-input" id="exampleCheck-{{_id}}" 
+                                                {{#if ativo}} checked{{/if}}>
+                                                <label class="form-check-label" for="exampleCheck-{{_id}}">Ativo</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                    {{!-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <button type="submit" class="btn btn-success" type="submit">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 </div>
             {{else}}
                 <div class="card-body">
-                    <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src="" alt="..."><br>
+                    <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src="./../../../files/vazio.png" alt="..."><br>
                     <label>Produto: </label><br>
                     <span>Valor: </span><span>R$ </span><br>
                     <button class="btn btn-success btn-block" disabled>Add Estoque</button><br>
                     <button class="btn btn-warning btn-block" disabled>Editar</button><br>
-                    <button class="btn btn-danger btn-block" disabled>Excluir</button>
+                    <button class="btn btn-danger btn-block" disabled>Desativar</button>
                 </div>
             {{/each}}
         </div>

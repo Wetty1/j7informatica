@@ -3,7 +3,6 @@ const Produtos = require('./../../models/Produto')
 module.exports = {
     
     async all (req, res){
-        console.log(req.body)
         const produtos = await Produtos.find()
 
         return res.render('admin/produtos', {produtos: produtos})
@@ -12,8 +11,6 @@ module.exports = {
     async store (req, res) { 
         const { nome, descricao, valor } = req.body
         const { filename } = req.file
-
-        console.log("------------ ", nome, descricao, valor, filename)
 
         await Produtos.create ({
             nome: nome,
@@ -26,21 +23,42 @@ module.exports = {
     },
 
     async desativar (req, res) {
-        //console.log('method: ', req.params)
-        //await Produtos.findById(req.params.id)
-        
+        await Produtos.updateOne({_id: req.params.id}, {ativo: false}, { runValidators: false })
         const prod = await Produtos.findById(req.params.id);
-
-        await Produtos.deleteOne({ _id: prod._id });
-
-        doc.ativo = false;
-        await doc.save(); 
-
+        console.log(prod)
+        
         return res.redirect('/admin')
     },
 
     async edit (req, res) {
-        console.log('method: ' )
+        console.log('body: ', req.body)
+        console.log('file: ', req.file)
+        const { nome, descricao, valor, ativo } = req.body
+
+        const objUpdate = {
+            nome: nome, 
+            descricao: descricao, 
+            valor: valor, 
+        }
+        
+        if (req.file != undefined && req.file !== "") {
+            const { filename } = req.file
+            objUpdate.thumbnail = filename
+        }
+        if(ativo != undefined) {
+            objUpdate.ativo = true
+            // await Produtos.updateOne({_id: req.params.id}, 
+            //     {nome: nome, descricao: descricao, valor: valor, thumbnail: filename, ativo: true},
+            //     { runValidators: false })
+        } else {
+            objUpdate.ativo = false
+        }
+        
+        console.log('objteste', objUpdate)
+        await Produtos.updateOne({_id: req.params.id}, 
+            objUpdate,
+            { runValidators: false })
+
         return res.redirect('/admin')
     }
 } 
