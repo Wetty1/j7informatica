@@ -39,13 +39,13 @@ router.get('/produtos', Produtos.all)
 router.post('/addproduto', upload.single('thumbnail'), Produtos.store)
 // router.post('/pedidos', Pedidos.store)
 
-/* DELETAR */
-
-router.put('/desativarproduto/:id', Produtos.desativar)
-// router.delete()
+router.post('/addestoque', Produtos.addEstoque)
 
 /* EDITAR */
 
 router.put('/editproduto/:id', upload.single('thumbnail'), Produtos.edit)
+
+router.put('/desativarproduto/:id', Produtos.desativar)
+
 
 module.exports = router

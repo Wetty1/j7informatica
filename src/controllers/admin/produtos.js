@@ -1,10 +1,43 @@
 const Produtos = require('./../../models/Produto')
+const Entrada = require('./../../models/Entrada_produto')
+const Saida = require('./../../models/Item_compra')
 
 module.exports = {
     
     async all (req, res){
-        const produtos = await Produtos.find()
+        let produtos = await Produtos.find()
 
+        let prodsx = []
+        
+        for(let i in produtos) {
+            let obj = {}
+            const entradas = await Entrada.aggregate([
+                { $match: {produto: produtos[i]._id}},
+                { $group: {_id: produtos[i]._id, quantidade: {$sum: "$quantidade"}}}
+            ])
+
+            const saidas = await Saida.aggregate([
+                { $match: {produto: produtos[i]._id}},
+                { $group: {_id: produtos[i]._id, quantidade: {$sum: "$quantidade"}}}
+            ])
+            
+            let estoque = {}
+            if(saidas.length > 1) {
+                estoque = {estoque: entradas[0].quantidade - saidas[0].quantidade}
+            } else { 
+                estoque = {estoque: entradas[0].quantidade}
+            }
+
+
+            obj = Object.assign(produtos[i], estoque)
+            obj.estoque = estoque
+            prodsx.push(obj)
+
+            console.log('obj: ', obj)
+            
+        }
+        console.log('prods: ', prodsx)
+        
         return res.render('admin/produtos', {produtos: produtos})
     },
 
@@ -12,13 +45,20 @@ module.exports = {
         const { nome, descricao, valor } = req.body
         const { filename } = req.file
 
-        await Produtos.create ({
+        const produto = await Produtos.create ({
             nome: nome,
             descricao: descricao,
             valor: valor,
-            thumbnail: filename
+            thumbnail: filename,
+            ativo: true,
         }).catch(err => console.error(err))
            
+        await Entrada.create({
+            produto: produto['_id'],
+            quantidade: 0,
+            data: Date.now(),
+        })
+
         return res.redirect('/admin/produtos')
     },
 
@@ -47,9 +87,6 @@ module.exports = {
         }
         if(ativo != undefined) {
             objUpdate.ativo = true
-            // await Produtos.updateOne({_id: req.params.id}, 
-            //     {nome: nome, descricao: descricao, valor: valor, thumbnail: filename, ativo: true},
-            //     { runValidators: false })
         } else {
             objUpdate.ativo = false
         }
@@ -58,6 +95,19 @@ module.exports = {
         await Produtos.updateOne({_id: req.params.id}, 
             objUpdate,
             { runValidators: false })
+
+        return res.redirect('/admin')
+    },
+
+    async addEstoque (req, res) {
+        const { id } = req.body
+        const { quantidade } = req.body
+        
+        await Entrada.create({
+            produto: id,
+            quantidade: quantidade,
+            data: Date.now(),
+        })
 
         return res.redirect('/admin')
     }

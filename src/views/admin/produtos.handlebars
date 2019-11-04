@@ -65,8 +65,10 @@
                     <label>Produto: {{nome}} </label><br>
                     <span>Valor: </span><span>{{valor}}</span><br>
                     <label>Descricao: {{descricao}} </label><br>
+                    <label>Estoque: {{descricao}} </label><br>
                     {{#unless ativo}} <label style="color: red;">Desativado</label><br> {{/unless}}
-                    <button class="btn btn-success btn-block">Add Estoque</button><br>
+                    <button class="btn btn-success btn-block" data-toggle="modal" data-target="#addmodal-{{_id}}">Add Estoque</button>
+                    
                     <button class="btn btn-warning btn-block" data-toggle="modal" data-target="#modal-{{_id}}">Editar</button><br>
                     <form method="post" action="/admin/desativarproduto/{{_id}}?_method=PUT">
                         <input type="hidden" name="_method" value="PUT">
@@ -74,7 +76,36 @@
                     </form>
                 </div>
 
-                <!-- Modal -->
+                <!-- Modal Add Estoque-->
+                <div class="modal" id="addmodal-{{_id}}" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <form action="/admin/addestoque" method="POST">
+                            <input type="hidden" name="id" value="{{_id}}">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Adicionar ao Estoque</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="descricao">Valor</label>
+                                            <input name="quantidade" type="number" class="form-control" id="id{{_id}}" value="1" placeholder="quantidade" required>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success">Adicionar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal Edição -->
                 <div class="modal fade" id="modal-{{_id}}" tabindex="-1" role="dialog" aria-labelledby="ModalEdite" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">

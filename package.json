@@ -1,0 +1,32 @@
+{
+  "name": "j7informatica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.19.0",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.7.5",
+    "mongoose-type-email": "^1.0.11",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wetty1/j7informatica.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wetty1/j7informatica/issues"
+  },
+  "homepage": "https://github.com/Wetty1/j7informatica#readme"
+}
