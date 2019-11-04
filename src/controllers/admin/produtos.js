@@ -23,13 +23,19 @@ module.exports = {
             
             let estoque = {}
             if(saidas.length > 1) {
-                estoque = {estoque: entradas[0].quantidade - saidas[0].quantidade}
+                estoque = entradas[0].quantidade - saidas[0].quantidade
             } else { 
-                estoque = {estoque: entradas[0].quantidade}
+                estoque = entradas[0].quantidade
             }
 
-
-            obj = Object.assign(produtos[i], estoque)
+            obj = {
+                _id: produtos[i]._id,
+                nome: produtos[i].nome,
+                descricao: produtos[i].descricao,
+                valor: produtos[i].valor,
+                thumbnail: produtos[i].thumbnail,
+                ativo: produtos[i].ativo,
+            }
             obj.estoque = estoque
             prodsx.push(obj)
 
@@ -38,7 +44,7 @@ module.exports = {
         }
         console.log('prods: ', prodsx)
         
-        return res.render('admin/produtos', {produtos: produtos})
+        return res.render('admin/produtos', {produtos: prodsx})
     },
 
     async store (req, res) { 
