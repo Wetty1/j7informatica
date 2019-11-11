@@ -1,12 +1,19 @@
 const express = require('express')
 const router = express.Router()
+const Produtos = require('./../../models/Produto')
+require('./all')
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     if(req.isAuthenticated()) {
-        console.log(req.user.nivel)
-        res.render('main/index', { user: req.user.nome, admin: req.user.nivel })
+        let produtos = await Produtos.find({ativo: true})
+
+        console.log(produtos)
+
+        res.render('main/index', { user: req.user.nome, admin: req.user.nivel, produtos: produtos})
     } else {
-        res.render('main/index')
+        let produtos = await Produtos.find({ativo: true})
+
+        res.render('main/index', {produtos: produtos})
     }
     
 })

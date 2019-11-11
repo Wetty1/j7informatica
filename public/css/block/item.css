@@ -1,0 +1,146 @@
+.admin-modal .modal-content{
+    background:url('../../img/fundo-login.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius:15px;
+}
+
+.admin-modal .i-block{
+    display: block;
+    margin:.5rem 0;
+}
+
+.admin-modal .form-control{
+    font-family: 'Lato', sans-serif;
+    color:#000;
+    font-weight: 500;
+    background:#f9f9f9;
+    border-radius:7px;
+}
+
+.admin-modal .form-control::placeholder{
+    font-family: 'Lato', sans-serif;
+    font-size:.9rem;
+    color:#000;
+    /* color:#fff; */
+    font-weight: 400;
+}
+.admin-modal .modal-header{
+    text-align: center;
+}
+
+.admin-modal .fa-clipboard-list{
+    color:#563d7c;
+}
+
+.admin-modal .i__title__modal{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    font-size:2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 40px;
+    padding-left:.9rem;
+    color:#fff;
+}
+
+.admin-modal .i__product{
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: bold;
+    font-size:1.3rem;
+    text-transform: uppercase;
+    margin-bottom:.4rem;
+    /* color:#563d7c; */
+    color:#000;
+}
+#header .button:hover{
+    background:rgba(0,0,0,.3);
+    cursor:pointer;
+}
+#header .button{
+    border:none;
+    outline:none;
+    background:none;
+    color:#fff;
+    text-transform:uppercase;
+    font-size:1rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition:.3s;
+    border:1px dashed #fff;
+}
+
+#admin-cards{
+    position:relative;
+    margin-top:3rem;
+}
+
+#admin-cards .card-title--admin{
+    height:100%;
+    font-size:2rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    color:#563d7c;
+}
+
+#admin-cards .card-text{
+    font-size:1.2rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    color:#3498db;
+}
+
+.btn-custom{
+    outline:none;
+    box-shadow: none;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor:pointer;
+    border-radius:10px;
+    display: block;
+    width:100%;
+    margin-top:.4rem;
+}
+
+#admin-cards .a-title{
+    font-size:3.2rem;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: justify;
+}
+
+#admin-cards .card{
+    margin-bottom:1rem;
+}
+
+#admin-cards .card:hover{
+    box-shadow:7px 10px 15px rgba(0,0,0,.5);
+    background:#f6f6f6;
+    cursor:pointer;
+    transition: .5s;
+}
+
+.card-img-top:hover{
+    transform:scale(1.05);
+}
+
+#admin-cards .card-img-top{
+    transition: .5s;
+    animation-delay: 1s;
+    animation-name: animate;
+    animation-timing-function: cubic-bezier(1, 0, 0, 1);
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes animate{
+    0%{
+        filter:grayscale(.3);
+    }
+    50%{filter:grayscale(.6);}
+    100%{filter:grayscale(1);}
+}

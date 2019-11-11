@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../img/favicon/apple-icon.png">
+    <link rel="stylesheet" href="../css/dest/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/dest/style.css">
+    <link rel="stylesheet" href="../css/templates/admin.css">
+    <title>Página Inicial- Admin</title>
+</head>
+<body>   
+
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-heading">
+                <a href="admin-home.html">
+                    <img src="../img/logo-admin.png" height="auto" width="150px"alt="Logo"> 
+                </a>   
+            </div>
+    
+            <div class="list-group list-group-flush">
+                <a href="admin-home.html" class="list-group-item"><i class="fas fa-home"></i> Home</a>
+                <a href="admin-produto.html" class="list-group-item"><i class="fab fa-product-hunt"></i> Produtos</a>
+                <a href="admin-pedidos.html" class="list-group-item"><i class="fas fa-hand-holding-usd"></i> Pedidos</a>
+                <!-- <a href="#" class="list-group-item"><i class="fas fa-sign-out-alt"></i> Sair</a> -->
+            </div>
+            
+        </div>
+        <!-- fim de sidebar -->
+    
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <header id="header">
+                <nav class="navbar navbar-expand-lg navbar-light container-fluid">
+                        <!-- <i class="fas fa-angle-left"></i> -->
+                    <span id="menu-toggle" class="h__toggle fas fa-chevron-circle-left"></span>
+                    <!-- <span id="menu-toggle" class="h__toggle fas fa-bars"></span>     -->
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-expanded="false" aria-controls="true">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            
+                    <div class="collapse navbar-collapse" id="menu">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <button class="nav-link button" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fas fa-info-circle"></i> Novo Item
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a href="login.html" class="nav-link"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                            </li>
+                               
+                            <li class="nav-item">
+                                <input type="text" maxlength="30" name="search" id="search" class="h-search-sm h-search" placeholder="Pesquisar produtos">
+                                <button class="icon" type="button" onclick="alerta()">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <img src="../img/me.png" alt="Logo">
+                                <span class="h__text--admin">Olá, Admin</span>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+    
+            <div class="container-fluid">
+                
+                <section class="admin-modal">
+                    <!-- inicio do modal - NOVO ITEM -  -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div id="teste" class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="i__title__modal" id="exampleModal">Adicionar Item <i class="fas fa-clipboard-list"></i></h5>
+                                    
+                                    <hr>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="i-block">
+                                                    <label class="i__product" for="product">Produto:</label>
+                                                    <input type="text" class="form-control" placeholder="Ex: Processador" name="product" id="product" >
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="i-block">
+                                                    <input type="file" class="form-control" name="file" id="file" >
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="i-block">
+                                                    <label class="i__product" for="value">Valor:</label>
+                                                    <input type="number" class="form-control" placeholder="Ex: R$ 459,99" name="value" id="value" >
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="i-block">
+                                                    <label class="i__product" for="desc">Descrição:</label>
+                                                    <textarea name="desc" id="desc" cols="20" rows="5" class="form-control" placeholder="Ex: Placa mãe Asus.."></textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>     
+                                </div>
+                                
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-dark" data-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-default btn-info">Salvar</button>
+                                </div>
+                                <!-- fim do modal -> NOVO ITEM -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="admin-cards">
+                    <div class="container-fluid d-flex">
+                        <div class="row">
+                            <div class="col-12">
+                                <h1 class="a-title">Produtos</h1>
+                                <hr>
+                            </div>
+    
+                            <div class="col-md-4">
+                                <!-- inicio da coluna  -->
+                                <div class="card" style="width: 18rem;">
+                                    <img src="../img/Monitor GAMER AOC 32 TELA CURVA  FULL HD  AG322FCX75/0.png" class="card-img-top" alt="P1">
+                                    <div class="card-body">
+    
+                                        <h5 class="card-title--admin">Monitor Gamer</h5>
+                                        <hr>
+                                        <p class="card-text">R$: <strong class="text-dark">500,00</strong></p>
+                                        <hr>
+                                        <p class="card-text">Descrição: <strong class="text-dark">2</strong><p>
+                                        <hr>
+                                        <p class="card-text">Estoque: <strong class="text-dark">2</strong><p>
+                                        <hr>
+    
+                                        <button class="btn btn-default bg-primary text-light btn-custom" data-toggle="modal" data-target="#edit">Editar</button>
+                                        <button type="button" class="btn bg-info  text-light btn-custom">Desativar</button>
+                                        <button type="button" class="btn btn-custom" style="background:#563d7c;color:#fff;">Estoque</button>
+                                    </div>
+                                <!-- fim do card  -->
+                                </div>
+                                <!-- fim da coluna  -->
+                            </div>
+    
+                            <div class="col-md-4">
+                                <!-- inicio da coluna  -->
+                                <div class="card" style="width: 18rem;">
+                                    <img src="../img/Cooler Aer RGB 2 (120MM  140MM)/0.png" class="card-img-top" alt="P1">
+                                    <div class="card-body">
+    
+                                        <h5 class="card-title--admin">Cooler Aer RGB</h5>
+                                        <hr>
+                                        <p class="card-text">R$: <strong class="text-dark">500,00</strong></p>
+                                        <hr>
+                                        <p class="card-text">Descrição: <strong class="text-dark">2</strong><p>
+                                        <hr>
+                                        <p class="card-text">Estoque: <strong class="text-dark">2</strong><p>
+                                        <hr>
+    
+                                        <button class="btn btn-default bg-primary text-light btn-custom" data-toggle="modal" data-target="#edit">Editar</button>
+                                        <button type="button" class="btn bg-info  text-light btn-custom">Desativar</button>
+                                        <button type="button" class="btn btn-custom" style="background:#563d7c;color:#fff;">Estoque</button>
+
+                                    </div>
+                                <!-- fim do card  -->
+                                </div>
+                                <!-- fim da coluna  -->
+                            </div>
+                                
+        
+                            <div class="col-md-4">
+                                <!-- inicio da coluna  -->
+                                <div class="card" style="width: 18rem;">
+                                    <img src="../img/Gabinete Gamer Nzxt S340 Branco White/0.png" class="card-img-top" alt="P1">
+                                    <div class="card-body">
+    
+                                        <h5 class="card-title--admin">Gabinete Nzxt S340</h5>
+                                        <hr>
+                                        <p class="card-text">R$: <strong class="text-dark">500,00</strong></p>
+                                        <hr>
+                                        <p class="card-text">Descrição: <strong class="text-dark">2</strong><p>
+                                        <hr>
+                                        <p class="card-text">Estoque: <strong class="text-dark">2</strong><p>
+                                        <hr>
+    
+                                        <button class="btn btn-default bg-primary text-light btn-custom" data-toggle="modal" data-target="#edit">Editar</button>
+                                        <button type="button" class="btn bg-info  text-light btn-custom">Desativar</button>
+                                        <button type="button" class="btn btn-custom" style="background:#563d7c;color:#fff;">Estoque</button>
+                                    </div>
+                                <!-- fim do card  -->
+                                </div>
+                                <!-- fim da coluna  -->
+                            </div>
+    
+        
+                            <div class="col-md-4">
+                                <!-- inicio da coluna  -->
+                                <div class="card" style="width: 18rem;">
+                                    <img src="../img/Placa mãe X299X Aorus Xtreme Waterforce/0.png" class="card-img-top" alt="P1">
+                                    <div class="card-body">
+    
+                                        <h5 class="card-title--admin">Placa mãe X299X</h5>
+                                        <hr>
+                                        <p class="card-text">R$: <strong class="text-dark">500,00</strong></p>
+                                        <hr>
+                                        <p class="card-text">Descrição: <strong class="text-dark">2</strong><p>
+                                        <hr>
+                                        <p class="card-text">Estoque: <strong class="text-dark">2</strong><p>
+                                        <hr>
+    
+                                        <button class="btn btn-default bg-primary text-light btn-custom" data-toggle="modal" data-target="#edit">Editar</button>
+                                        <button type="button" class="btn bg-info  text-light btn-custom">Desativar</button>
+                                        <button type="button" class="btn btn-custom" style="background:#563d7c;color:#fff;">Estoque</button>
+                                    </div>
+                                <!-- fim do card  -->
+                                </div>
+                                <!-- fim da coluna  -->
+                            </div>
+                            <!-- fim da linha -->
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="admin-modal">
+                        <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div id="teste" class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="i__title__modal" id="edit">Editar Item <i class="fas fa-clipboard-list"></i></h5>
+                                        
+                                        <hr>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+    
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <label class="i__product" for="product">Produto:</label>
+                                                        <input type="text" class="form-control" placeholder="Ex: Processador" name="product" id="product" >
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <input type="file" class="form-control" name="file" id="file" >
+                                                    </div>
+                                                </div>
+    
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <label class="i__product" for="value">Valor:</label>
+                                                        <input type="number" class="form-control" placeholder="Ex: R$ 459,99" name="value" id="value" >
+                                                    </div>
+                                                </div>
+    
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <label class="i__product" for="desc">Descrição:</label>
+                                                        <textarea name="desc" id="desc" cols="20" rows="5" class="form-control" placeholder="Ex: Placa mãe Asus.."></textarea>
+                                                    </div>
+                                                </div>
+    
+                                            </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-dark" data-dismiss="modal">Fechar</button>
+                                        <button type="button" class="btn btn-default btn-info">Salvar</button>
+                                    </div>
+                                    <!-- fim do modal -> NOVO ITEM -->
+                                </div>
+                            </div>
+                        </div>
+                </section>
+
+            </div>
+        </div>  
+            <!-- /#page-content-wrapper -->
+        
+    </div>
+   
+
+    
+
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/popper.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/efect-toggle.js"></script>
+</body>
+</html>

@@ -1,46 +1,77 @@
 #footer{
+    position:relative;
+    height:auto;
+    width: 100%;
+    margin-top:2rem;
+    background:#43b6fe;
+}
+
+#footer .logo-rodape{
+    height:250px;
+    width:250px;
+}
+
+#footer .col-md-3{
     text-align: center;
-    background:linear-gradient(120deg, #152038,#0E1724,#0E1724);
-    background-size:200%;
-    animation-name: rodape;
-    animation-delay: .1s;
-    animation-duration: 3s;
-    animation-iteration-count:infinite;
-    animation-direction: alternate;
-    padding:1rem 0 0.6rem 0;
-    position: fixed;
-    bottom:0;
-    width:100%;
 }
 
-#footer .text__bottom{
-    font-size:1.15rem;
-    color:#aaa;
+#footer .social{
+    display: flex;
+    flex-direction: column;
+}
+
+#footer .f__title{
     font-family: 'Open Sans Condensed', sans-serif;
-    line-height:25px;
-    font-weight: 600;
+    font-weight: 700;
+    font-size:1.3rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color:#fff;
+    margin-bottom:1rem;
 }
 
-#footer .is-active{
-    color:#f4f4f4;
-}
-
-#footer .logo__bottom{
-    margin:1em auto;
+#footer .team{
+    text-align: justify;
 }
 
 
-@keyframes rodape{
-    0%{
-        background-size:100%;
-        background-position: left;
-    }
-    50%{
-        background-size:200%;
-        background-position: center;
-    }
-    100%{
-        background-position: right;
-        background-size:300%;
-    }
+#footer .team p{
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size:1.1rem;
+    color:#fff;
+    line-height: 30px;
+}
+
+#footer .f-participation p{
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size:1.1rem;
+    color:#fff;
+    line-height: 30px;
+}
+#footer .f-participation{
+    text-align: right   ;
+}
+
+#footer .fab:hover{
+    color:#000;
+    transition:.25s;
+}
+#footer .fab{
+    font-size:2.6rem;
+    color:#fff;
+    padding:.55rem;
+}
+
+#footer .f-borda:after{
+    content:'';
+    display:block;
+    position: absolute;
+    top:0;
+    transform:translateY(25%);
+    right:0;
+    width:2px;
+    height:205px;
+    background:#f2f2f2;
 }

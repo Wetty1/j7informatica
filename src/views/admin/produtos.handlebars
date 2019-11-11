@@ -1,9 +1,9 @@
-<h1>Produtos</h1>
+{{!-- <h1>Produtos</h1>
 <div class="form-control">
-    {{!-- Formulario para adcionar produto
+    Formulario para adcionar produto
         ( Nome, Descrição, Valor )
         "Ao criar o produto formará uma entrada e uma saida vazia"
-    --}}
+    
     <h2>Adicionar produto</h2>
     <form action="/admin/addproduto" method="post" enctype="multipart/form-data">
         <div class="container">
@@ -59,13 +59,13 @@
 <div class="container">
     <div class="d-flex">
         <div class="card d-flex">
-            {{#each produtos}}
+            {#each produtos}
                 <div class="card-body">
-                    <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src="./../../../files/{{thumbnail}}" alt="{{thumbnail}}"><br>
-                    <label>Produto: {{nome}} </label><br>
-                    <span>Valor: </span><span>{{valor}}</span><br>
-                    <label>Descricao: {{descricao}} </label><br>
-                    <label>Estoque: {{estoque}} </label><br>
+                    <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src=".//public//public//public/files/{{thumbnail}}" alt="{{thumbnail}}"><br>
+                    <label>Produto: {{nome}}</label><br>
+                    <span>Valor: </span><span>R$ {{valor}},00</span><br>
+                    <label>Descricao: {{descricao}}</label><br>
+                    <label>Estoque: {{estoque}}</label><br>
                     {{#unless ativo}} <label style="color: red;">Desativado</label><br> {{/unless}}
                     <button class="btn btn-success btn-block" data-toggle="modal" data-target="#addmodal-{{_id}}">Add Estoque</button>
                     
@@ -161,7 +161,7 @@
                                     </div>
                                     
 
-                                    {{!-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+                                    <button type="submit" class="btn btn-primary">Submit</button> 
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -172,16 +172,327 @@
                     </div>
                 </div>
                 </div>
-            {{else}}
+            else
                 <div class="card-body">
-                    <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src="./../../../files/vazio.png" alt="..."><br>
+                    <img class="rounded img-thumbnail" style="width: 200px; height: 200px;" src=".//public//public//public/files/vazio.png" alt="..."><br>
                     <label>Produto: </label><br>
                     <span>Valor: </span><span>R$ </span><br>
                     <button class="btn btn-success btn-block" disabled>Add Estoque</button><br>
                     <button class="btn btn-warning btn-block" disabled>Editar</button><br>
                     <button class="btn btn-danger btn-block" disabled>Desativar</button>
                 </div>
-            {{/each}}
+            {/each
         </div>
     </div>
 </div>
+
+ --}}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/public/img/favicon/apple-icon.png">
+    <link rel="stylesheet" href="/public/css/dest/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/dest/style.css">
+    <link rel="stylesheet" href="/public/css/templates/admin.css">
+    <title>Painel Admin</title>
+</head>
+<body> 
+
+<div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-heading">
+                <a href="admin-home.html">
+                    <img src="/public/img/logo-admin.png" height="auto" width="150px"alt="Logo"> 
+                </a>   
+            </div>
+    
+            <div class="list-group list-group-flush">
+                <a href="/admin/produtos" class="list-group-item"><i class="fas fa-home"></i> Home</a>
+                <a href="/admin/produtos" class="list-group-item"><i class="fab fa-product-hunt"></i> Produtos</a>
+                <a href="/admin" class="list-group-item"><i class="fas fa-hand-holding-usd"></i> Pedidos</a>
+                <!-- <a href="#" class="list-group-item"><i class="fas fa-sign-out-alt"></i> Sair</a> -->
+            </div>
+            
+        </div>
+        <!-- fim de sidebar -->
+    
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <header id="header">
+                <nav class="navbar navbar-expand-lg navbar-light container-fluid">
+                        <!-- <i class="fas fa-angle-left"></i> -->
+                    <span id="menu-toggle" class="h__toggle fas fa-chevron-circle-left"></span>
+                    <!-- <span id="menu-toggle" class="h__toggle fas fa-bars"></span>     -->
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-expanded="false" aria-controls="true">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+            
+                    <div class="collapse navbar-collapse" id="menu">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <button class="nav-link button" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="fas fa-info-circle"></i> Novo Item
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a href="/user/logout" class="nav-link"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                            </li>
+                               
+                            <li class="nav-item">
+                                <input type="text" maxlength="30" name="search" id="search" class="h-search-sm h-search" placeholder="Pesquisar produtos">
+                                <button class="icon" type="button" onclick="alerta()">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </li>
+
+                            <li class="nav-item">
+                                <img src="https://icon-library.net/images/admin-user-icon/admin-user-icon-4.jpg" alt="Logo">
+                                <span class="h__text--admin">Olá, Admin</span>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+    
+            <div class="container-fluid">
+                
+                <section class="admin-modal">
+                    <!-- inicio do modal - NOVO ITEM -  -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div id="teste" class="modal-content">
+                                <form action="/admin/addproduto" method="post" enctype="multipart/form-data">
+                                    <div class="modal-header">
+                                        <h5 class="i__title__modal" id="exampleModal">Adicionar Item <i class="fas fa-clipboard-list"></i></h5>
+                                        
+                                        <hr>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <label class="i__product" for="product">Produto:</label>
+                                                        <input type="text" class="form-control" placeholder="Ex: Processador" name="nome" id="product" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <label class="i__product" for="product">Thumbnail 1:</label>
+                                                        <input type="file" class="form-control" name="thumbnail" id="file" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <label class="i__product" for="product">Thumbnail 2:</label>
+                                                        <input type="file" class="form-control" name="thumbnail2" id="file" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <label class="i__product" for="product">Thumbnail 3:</label>
+                                                        <input type="file" class="form-control" name="thumbnail3" id="file" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <label class="i__product" for="product">Thumbnail 4:</label>
+                                                        <input type="file" class="form-control" name="thumbnail4" id="file" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <label class="i__product" for="value">Valor:</label>
+                                                        <input type="number" class="form-control" placeholder="Ex: R$ 459,99" name="valor" id="value" >
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="i-block">
+                                                        <label class="i__product" for="desc">Descrição:</label>
+                                                        <input name="descricao" id="desc" cols="20" rows="5" class="form-control" placeholder="Ex: Placa mãe Asus.."/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-dark" data-dismiss="modal">Fechar</button>
+                                        <button type="submit" class="btn btn-default btn-info">Salvar</button>
+                                    </div>
+                                </form>
+                                <!-- fim do modal -> NOVO ITEM -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="admin-cards">
+                    <div class="container-fluid d-flex">
+                        <div class="row">
+                            <div class="col-12">
+                                <h1 class="a-title">Produtos</h1>
+                                <hr>
+                            </div>
+
+                            {{#each produtos}}
+                                <div class="col-md-4">
+                                    <!-- inicio da coluna  -->
+                                    <div class="card" style="width: 18rem;">
+                                        <img src="/files/{{thumbnail}}" class="card-img-top" alt="P1">
+                                        <div class="card-body">
+        
+                                            <h5 class="card-title--admin">{{nome}}</h5>
+                                            <hr>
+                                            <p class="card-text">R$: <strong class="text-dark">{{valor}},00</strong></p>
+                                            <hr>
+                                            <p class="card-text">Descrição: <strong class="text-dark">{{descricao}}</strong><p>
+                                            <hr>
+                                            <p class="card-text">Estoque: <strong class="text-dark">{{estoque}}</strong><p>
+                                            <hr>
+                                            {{#unless ativo}}
+                                                <p class="card-text" style="color: red;"><strong>DESATIVADO</strong><p>
+                                                <hr>
+
+                                                <form method="post" action="/admin/ativarproduto/{{_id}}?_method=PUT">
+                                                    <input type="hidden" name="_method" value="PUT">
+                                                    <button type="submit" class="btn bg-info  text-light btn-custom">Ativar</button>
+                                                </form>
+
+                                            {{else}}
+                                                <form method="post" action="/admin/desativarproduto/{{_id}}?_method=PUT">
+                                                    <input type="hidden" name="_method" value="PUT">
+                                                    <button type="submit" class="btn bg-info  text-light btn-custom">Desativar</button>
+                                                </form>
+                                            {{/unless}}
+        
+                                            <button class="btn btn-default bg-primary text-light btn-custom" data-toggle="modal" data-target="#edit{{@index}}">Editar</button>
+                                            
+                                            <button type="button" class="btn btn-custom" style="background:#563d7c;color:#fff;"  data-toggle="modal" data-target="#addmodal-{{@index}}">Estoque</button>
+                                        </div>
+                                    <!-- fim do card  -->
+                                    </div>
+                                    <!-- fim da coluna  -->
+                                </div>
+
+                                <!-- MODAL EDITAR ITEM -->
+                                <section class="admin-modal">
+                                        <div class="modal fade" id="edit{{@index}}" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div id="teste" class="modal-content">
+                                                    <form method="post" action="/admin/editproduto/{{_id}}?_method=PUT" enctype="multipart/form-data">
+                                                        <div class="modal-header">
+                                                            <h5 class="i__title__modal" id="edit">Editar Item <i class="fas fa-clipboard-list"></i></h5>
+                                                            
+                                                            <hr>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="i-block">
+                                                                            <label class="i__product" for="product">Produto:</label>
+                                                                            <input value="{{nome}}" type="text" class="form-control" placeholder="Ex: Processador" name="nome" id="product" >
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-12">
+                                                                        <div class="i-block">
+                                                                            <input type="file" class="form-control" name="file" id="file" >
+                                                                        </div>
+                                                                    </div>
+                        
+                                                                    <div class="col-md-12">
+                                                                        <div class="i-block">
+                                                                            <label class="i__product" for="value">Valor:</label>
+                                                                            <input value="{{valor}}" type="number" class="form-control" placeholder="Ex: R$ 459,99" name="valor" id="value" >
+                                                                        </div>
+                                                                    </div>
+                        
+                                                                    <div class="col-md-12">
+                                                                        <div class="i-block">
+                                                                            <label class="i__product" for="desc">Descrição:</label>
+                                                                            <input value="{{descricao}}" name="descricao" id="desc" cols="20" rows="5" class="form-control" placeholder="Ex: Placa mãe Asus.."/>
+                                                                        </div>
+                                                                    </div>
+                        
+                                                                </div>
+                                                            </div>     
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default btn-dark" data-dismiss="modal">Fechar</button>
+                                                            <button type="submit" class="btn btn-default btn-info">Salvar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </section>
+                                <!-- fim do modal -> EDITAR ITEM -->
+
+                                <!-- Modal Add Estoque-->
+                                <div class="modal admin-modal" id="addmodal-{{@index}}" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <form action="/admin/addestoque" method="POST">
+                                            <input type="hidden" name="id" value="{{_id}}">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Adicionar ao Estoque</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label for="descricao">Valor</label>
+                                                            <input name="quantidade" type="number" class="form-control" id="id{{_id}}" value="1" placeholder="quantidade" min="1" required>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-success">Adicionar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>  
+            <!-- /#page-content-wrapper -->
+    </div>
+
+    <script src="/public/js/jquery-3.4.1.min.js"></script>
+    <script src="/public/js/popper.js"></script>
+    <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/efect-toggle.js"></script>
+</body>
+</html>
+
+

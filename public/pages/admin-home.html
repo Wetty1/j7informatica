@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="../img/favicon/apple-icon.png">
+    <link rel="stylesheet" href="../css/dest/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/dest/style.css">
+    <link rel="stylesheet" href="../css/templates/admin.css">
+    <title>Página Inicial- Admin</title>
+</head>
+<body>   
+
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-heading">
+                <a href="admin-home.html">
+                    <img src="../img/logo-admin.png" height="auto" width="150px"alt="Logo"> 
+                </a>   
+            </div>
+    
+            <div class="list-group list-group-flush">
+                <a href="admin-home.html" class="list-group-item"><i class="fas fa-home"></i> Home</a>
+                <a href="admin-produto.html" class="list-group-item"><i class="fab fa-product-hunt"></i> Produtos</a>
+                <a href="admin-pedidos.html" class="list-group-item"><i class="fas fa-hand-holding-usd"></i> Pedidos</a>
+                <!-- <a href="#" class="list-group-item"><i class="fas fa-sign-out-alt"></i> Sair</a> -->
+            </div>
+            
+        </div>
+        <!-- fim de sidebar -->
+        <!-- <span id="menu-toggle" class="h__toggle fas fa-bars"></span> -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+                <header id="header">
+                    <nav class="navbar navbar-expand-lg navbar-light container-fluid">
+                            <!-- <i class="fas fa-angle-left"></i> -->
+                        <span id="menu-toggle" class="h__toggle fas fa-chevron-circle-left"></span>
+                        <!-- <span id="menu-toggle" class="h__toggle fas fa-bars"></span>     -->
+                        <button class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-expanded="false" aria-controls="true">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="login.html" class="nav-link"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                                </li>    
+                                    
+                                <li class="nav-item">
+                                    <input type="text" maxlength="30" name="search" id="search" class="h-search-sm h-search" placeholder="Pesquisar produtos">
+                                    <button class="icon" type="button" onclick="alerta()">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </li>
+
+                                <li class="nav-item">
+                                    <img src="../img/me.png" alt="Logo">
+                                    <span class="h__text--admin">Olá, Admin</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
+    
+            <div class="container-fluid">
+                <h1 class="display-4">Página inicial</h1>
+
+            </div>
+        </div>  
+            <!-- /#page-content-wrapper -->
+    </div>
+   
+
+    
+
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/popper.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/efect-toggle.js"></script>
+    <script>
+    
+        function alerta(){
+            alert('Produto não encontrado!')
+        }
+        
+    </script>
+</body>
+</html>

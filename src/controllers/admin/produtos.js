@@ -39,23 +39,27 @@ module.exports = {
             obj.estoque = estoque
             prodsx.push(obj)
 
-            console.log('obj: ', obj)
             
         }
-        console.log('prods: ', prodsx)
         
-        return res.render('admin/produtos', {produtos: prodsx})
+        return res.render('admin/produtos', {layout: false, produtos: prodsx})
     },
 
     async store (req, res) { 
         const { nome, descricao, valor } = req.body
-        const { filename } = req.file
+        const filename = req.files.thumbnail[0].filename
+        const filename2 = req.files.thumbnail2[0].filename
+        const filename3 = req.files.thumbnail3[0].filename
+        const filename4 = req.files.thumbnail4[0].filename
 
         const produto = await Produtos.create ({
             nome: nome,
             descricao: descricao,
             valor: valor,
             thumbnail: filename,
+            thumbnail2: filename2,
+            thumbnail3: filename3,
+            thumbnail4: filename4,
             ativo: true,
         }).catch(err => console.error(err))
            
@@ -70,6 +74,14 @@ module.exports = {
 
     async desativar (req, res) {
         await Produtos.updateOne({_id: req.params.id}, {ativo: false}, { runValidators: false })
+        const prod = await Produtos.findById(req.params.id);
+        console.log(prod)
+        
+        return res.redirect('/admin')
+    },
+
+    async ativar (req, res) {
+        await Produtos.updateOne({_id: req.params.id}, {ativo: true}, { runValidators: false })
         const prod = await Produtos.findById(req.params.id);
         console.log(prod)
         

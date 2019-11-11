@@ -1,6 +1,11 @@
 @import "../block/miolo.css";
-@import "../modifier/fontes.css";
 @import "../block/main.css";
 @import "../block/footer.css";
-@import "../modifier/colors.css";
-@import "../block/form.css";
+@import "../modifier/fontes.css";
+@import "../dest/fontawesome-free/css/all.min.css";
+@import "../dest/reset.css";
+
+html {
+    scroll-behavior: smooth;
+}
+

@@ -17,6 +17,18 @@ const Produto = mongoose.Schema({
         type: String,
         required: true
     },
+    thumbnail2: {
+        type: String,
+        required: true
+    },
+    thumbnail3: {
+        type: String,
+        required: true
+    },
+    thumbnail4: {
+        type: String,
+        required: true
+    },
     ativo: {
         type: Boolean,
         required: true,

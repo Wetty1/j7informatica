@@ -2,74 +2,172 @@
     <nav class="navbar navbar-expand-lg navbar-light container-fluid">
         <a href="/" class="navbar-brand">j7 eShop</a>
         
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-controls="expanded">
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#menu" aria-expanded="false" aria-controls="true">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="menu">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a href="/" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-thumbs-up"></i> Sobre</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> Shop</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-mobile-alt"></i> Contato</a></li>
+            <ul class="navbar-nav ml-auto">
+                {{#if user}}
+                    <li class="nav-item"><a href="#header" class="nav-link"><i class="fas fa-user"></i> {{user}}</a></li>
+                    {{#if admin}}
+                        <li class="nav-item"><a href="/admin/produtos" class="nav-link"><i class="fas fa-columns"></i> Painel</a></li>
+                    {{/if}}
+                {{/if}}
+                <li class="nav-item"><a href="#header" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+                <li class="nav-item"><a href="/user/login" class="nav-link"><i class="fas fa-user"></i> login</a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+                <li class="nav-item"><a href="#footer" class="nav-link"><i class="fas fa-mobile-alt"></i> Contato</a></li>
+                <div class="active"></div>
+                <li class="nav-item">
+                    <input type="text" maxlength="30" name="search" id="search" class="h-search-sm h-search" placeholder="Pesquisar produtos">
+                    <button class="icon" type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </li>
             </ul>
         </div>
-        
-        <ul class="h__list">
-            <li>
-                <div class="header__search ml-auto">
-                    <input type="text" maxlength="30" class="h__search" placeholder="Procurar Produto">
-                    <button class="btn btn-primary" title="buscar">
-                        <i class="fas fa-shopping-cart"></i> CARRINHO
-                    </button>
-                    <span class="h__icon">
-                        <button type="submit" title="pesquisar">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </span> 
-                </div>
-            </li>
-            
-            <li>
-                <a href="/user/login">
-                    <div class="avatar__img" id="logar">
-                        <div class="overlay"></div>
-                    </div>
-                </a>
-                
-            </li>
-
-        </ul>
     </nav>
-    <div>
-        {{#if user}}
-            <li>
-                <h2 style="color:white">{{user}}</h2>
-                {{#if admin}}
-                    <input type="hidden" name="{{admin}}">
-                    <form action="/admin/produtos">
-                        <button type="submit" class="btn btn-secundary">Painel</button>
-                    </form>
-                {{/if}}
-                <form action="/user/logout">
-                    <button type="submit" class="btn btn-danger">Sair</button>
-                </form>
-            </li>
-        {{else}}
-            <li>
-                <h2 style="color:white">Não logado!</h2>
-            </li>
-        {{/if}}
-    </div>
-    
 </header>
 
 <!-- aqui vai o conteudo main  -->
+<main id="main">
+    <section id="cards-j7">
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-md-4 col-sm-12 d-flex justify-content-center">
+                    <div class="block">
+                        <a href="produto.html" target="_blank">
+                            <img src="/public/img/produto3.png" alt="img" class="img-product">
+                        </a>
+                    </div>
+                
+                    <div class="describe-product">
+                        <div class="d-especifications">
+                            <span class="desc">10%</span>
+                            <h2 class="title__product">Placa mãe Gigabyte</h2>
+                        </div>
+                        <p class="currency">R$255,90</p>
+                        <div class="stars">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                        </div> 
+                    </div>
 
+                </div>
+    
+                <div class="col-md-4 col-sm-12 d-flex justify-content-center">
+                    <div class="block">
+                        <a target="_blank" href="produto.html">
+                            <img src="/public/img/produto1.png" alt="img" class="img-product">
+                        </a>
+                    </div>
+                
+                    <div class="describe-product">
+                        <div class="d-especifications">
+                            <span class="desc">50%</span>
+                            <h2 class="title__product">PC Gamer - Extreme</h2>
+                        </div>
+                        <p class="currency">R$1800,00</p>
+                        <div class="stars">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                        </div>
+                                
+                    </div>
+                </div>
+    
+                <div class="col-md-4 col-sm-12 d-flex justify-content-center">
+                    <div class="block">
+                        <a href="produto.html" target="_blank">
+                            <img src="/public/img/produto2.png" alt="img" class="img-product">
+                        </a>
+                    </div>
+                
+                    <div class="describe-product">
+                        <span class="desc">
+                            <i class="fas fa-cart-plus"></i>
+                        </span>
+                        
+                        <div class="d-especifications">
+                            <h2 class="title__product">Monitor DELL 20'p</h2>
+                        </div>
+                        <p class="currency">R$500,00</p>
 
-<footer id="footer">
-    <div class="logo__bottom">
-        <img src="/public/img/logo-topo.svg" width="auto" height="70px" alt="Logo">
-    </div>
-    <p class="text__bottom is-active">&copy; Todos os direitos reservados</p>
-</footer>
+                        <div class="stars">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                        </div>
+                                
+                    </div>
+                </div>
+
+                <!-- fim da linha -->
+            </div>
+        </div>
+    </section>
+
+    <section id="my-cards" class="container-fluid">
+        <div class="row d-flex">
+
+            {{#each produtos}}
+                <div class="col-md-4 mt-3">
+                    <div class="product-card" id="item{{@index}}">
+                        <h1>{{nome}}</h1>
+                        <p>{{descricao}}</p>
+                        <img id="image{{@index}}" src="/files/{{thumbnail}}" height="300px" width="100%" alt="">
+                        
+                        <div class="product-images">
+                            <img src="/files/{{thumbnail}}"  alt="">
+                            <img src="files/{{thumbnail2}}" alt="">
+                            <img src="files/{{thumbnail3}}" alt="">
+                            <img src="files/{{thumbnail4}}" alt="">
+                            <div class="start"></div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product__price">R$ {{valor}},00</div>
+                            <button type="button" action="produto.html" class="product__button">
+                                Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    $('#item{{@index}} img:nth-child(1)').on('click',function(){    
+                        $('#item{{@index}} .start').css({left:'7%'})
+                        $('#image{{@index}}').attr('src','files/{{thumbnail}}')
+                    })
+
+                    $('#item{{@index}} img:nth-child(2)').on('click',function(){
+                        $('#item{{@index}} .start').css({left:'30%'})
+                        $('#image{{@index}}').attr('src','files/{{thumbnail2}}')
+                    })
+
+                    $('#item{{@index}} img:nth-child(3)').on('click',function(){
+                        $('#item{{@index}} .start').css({left:'51%'})
+                        $('#image{{@index}}').attr('src','files/{{thumbnail3}}')
+                    })
+
+                    $('#item{{@index}} img:nth-child(4)').on('click',function(){
+                        $('#item{{@index}} .start').css({left:'72%'})
+                        $('#image{{@index}}').attr('src','files/{{thumbnail4}}')
+                    })
+
+                </script>
+            {{/each}}
+
+        </div>
+    </section>
+</main>
+

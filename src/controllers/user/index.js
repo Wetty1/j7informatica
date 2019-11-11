@@ -11,7 +11,7 @@ module.exports = (passport) =>  {
             res.redirect('/')
             return;
         }
-        res.render('auth/login')
+        res.render('auth/login', {layout: false})
     })
 
     router.post('/login', passport.authenticate('local-singin', {

@@ -1,27 +1,17 @@
-.theme__login{
+.theme-login{
     width:100%;
     display: block;
     overflow: hidden;
-}
-header{
-    height: auto;
-    overflow: hidden;
-}
-
-.video{
-    position: fixed;
-    min-width: 100%;
-    min-height: 100%;
-    height: auto;
-    right:0;
-    bottom:0;
-    width: auto;
+    background:url(../../img/fundo-login.png);
+    background-position: top center;
+    background-size:cover;
+    background-attachment: fixed;   
 }
 
 .box{
     width:360px;
     background:#000;
-    opacity: .88;
+    opacity: .8;
     height:520px;
     padding:80px 40px;
     box-sizing: border-box;
@@ -32,7 +22,7 @@ header{
     transform:translate(-50%,-50%);
 }
 
-.box .login__title{
+.box .b__title{
     text-align: center;
     margin-bottom: 60px;
     font-size: 2.5rem;
@@ -65,7 +55,7 @@ header{
     display: block;
     width:0%;   
     height: 2px;
-    background:linear-gradient(120deg,#152038,#3498db);
+    background:linear-gradient(120deg, #12C9FF,#8380E8);
     transition: .5s;
 }
 
@@ -103,11 +93,11 @@ header{
     border:none;
     outline:none;
     cursor:pointer;
-    background:linear-gradient(120deg, #152038,#3498db,#152038);
+    background:linear-gradient(120deg, #3498db,#8244ad,#3498db);
     background-size:200%;
 }
 
-.box .txt__bottom{
+.box .b-text{
     text-align: justify;
     margin-top:40px;
 }
