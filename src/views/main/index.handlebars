@@ -1,4 +1,12 @@
 <header id="header">
+    <style>
+        #header .nav-item:nth-child(3):hover ~ .active{
+            transform:translateX(12.5rem) !important;
+        }
+        #header .nav-item:nth-child(4):hover ~ .active{
+            transform:translateX(19rem) !important;
+        }
+    </style>
     <nav class="navbar navbar-expand-lg navbar-light container-fluid">
         <a href="/" class="navbar-brand">j7 eShop</a>
         
@@ -8,22 +16,41 @@
 
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ml-auto">
-                {{#if user}}
-                    <li class="nav-item"><a href="#header" class="nav-link"><i class="fas fa-user"></i> {{user}}</a></li>
-                    {{#if admin}}
-                        <li class="nav-item"><a href="/admin/produtos" class="nav-link"><i class="fas fa-columns"></i> Painel</a></li>
-                    {{/if}}
-                {{/if}}
                 <li class="nav-item"><a href="#header" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
-                <li class="nav-item"><a href="/user/login" class="nav-link"><i class="fas fa-user"></i> login</a></li>
+                {{#if user}}
+                    {{#if admin}}
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"><i class="fas fa-user"></i> ADMIN</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href=""><i class="fas fa-user"></i> {{user}}</a>
+                                <a class="dropdown-item" href="/admin/produtos"><i class="fas fa-user-cog"></i> Painel</a>
+                                <a class="dropdown-item" href="/user/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </li>
+                    {{else}}
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"><i class="fas fa-user"></i> User</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href=""><i class="fas fa-user"></i> {{user}}</a>
+                                <a class="dropdown-item" href="/user/compras"><i class="fas fa-shopping-basket"></i> Compras</a>
+                                <a class="dropdown-item" href="/user/meusdados"><i class="fas fa-address-book"></i> Meus dados</a>
+                                <a class="dropdown-item" href="/user/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </li>
+                    {{/if}}
+                {{else}}
+                    <li class="nav-item"><a href="/user/login" class="nav-link"><i class="fas fa-user"></i> login</a></li>
+                {{/if}}
                 <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
                 <li class="nav-item"><a href="#footer" class="nav-link"><i class="fas fa-mobile-alt"></i> Contato</a></li>
                 <div class="active"></div>
                 <li class="nav-item">
-                    <input type="text" maxlength="30" name="search" id="search" class="h-search-sm h-search" placeholder="Pesquisar produtos">
-                    <button class="icon" type="button">
-                        <i class="fas fa-search"></i>
-                    </button>
+                    <form action="/pesquisa" method="get">
+                        <input type="text" maxlength="30" name="search" id="search" class="h-search-sm h-search" placeholder="Pesquisar produtos">
+                        <button class="icon" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>
@@ -166,6 +193,8 @@
                     })
 
                 </script>
+            {{else}}
+                <h2> Nenhum item foi encontrado!</h2>           
             {{/each}}
 
         </div>

@@ -1,0 +1,27 @@
+#header .nav-item:nth-child(3):hover ~ .active{
+    transform:translateX(13rem) !important;
+}
+
+#header .nav-item:nth-child(4):hover ~ .active{
+    transform:translateX(19.4rem) !important;
+}
+
+#header .navbar .dropdown-menu{
+    background:transparent;
+    border-radius:10px;
+}
+#header .navbar .dropdown-item:hover{background:purple;}
+#header .navbar .dropdown-item{
+    color:#fff;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed', sans-serif;
+    transition:.25s;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius:10px;
+    margin-top:2px;
+}
+
+.bg-scroll-admin{
+    background:#000;
+}
