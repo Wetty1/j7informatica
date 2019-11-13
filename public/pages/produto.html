@@ -25,9 +25,9 @@
             <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
-                    <li class="nav-item"><a href="login.html" class="nav-link"><i class="fas fa-user"></i> login</a></li>
+                    <li class="nav-item"><a href="login.html" target="_blank"class="nav-link"><i class="fas fa-user"></i> login</a></li>
                     <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-mobile-alt"></i> Contato</a></li>
+                    <li class="nav-item"><a href="#footer" class="nav-link"><i class="fas fa-mobile-alt"></i> Contato</a></li>
                     <div class="active"></div>
                     <li class="nav-item">
                         <input type="text" maxlength="30" name="search" id="search" class="h-search-sm h-search" placeholder="Pesquisar produtos">
@@ -46,19 +46,19 @@
                 <div class="col-md-8 col-lg-8">
                     <ul class="p-list">
                         <li class="p--star">
-                            <img src="../img/produto1.png" data-zoom-image="../img/produto1.png" class="p-img-father" width="100%" height="100%" alt="Produto principal">
+                            <span  class="p-img-father" alt="Produto principal"></span>
                         </li>
 
                         <li class="p-block">
-                            <img src="../img/produto1.png" class="p-img" alt="produto filho">
+                            <span data-pic="url(../img/produto1.png)"  class="p-img one" alt="produto filho"></span>
                         </li>
 
                         <li class="p-block">
-                            <img src="../img/produto1.png" class="p-img" alt="produto filho">
+                            <span  data-pic="url(../img/produto2.png)"class="p-img two" alt="produto filho"></span>
                         </li>
 
                         <li class="p-block">
-                            <img src="../img/produto1.png" class="p-img" alt="produto filho">
+                            <span data-pic="url(../img/produto3.png)" class="p-img three" alt="produto filho"></span>
                         </li>
                     </ul>
                 </div>
@@ -123,6 +123,8 @@
                 </div>
             </div>
         </div>
+
+        
     </section>
     
     <section id="commit">
@@ -326,21 +328,11 @@
             </div>
         </div>
     </footer>
-    
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/jquery.elevateZoom-3.0.8.min.js"></script>
     <script src="../js/popper.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/efect-scroll.js"></script>
-    
-    <script>
-        
-        $('.p-img-father').elevateZoom({
-            easing : true
-        });
-            
-            
-        
-    </script>
+    <script src="../js/efect-product.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 .admin-modal .modal-content{
-    background:url('/public/img/fundo-login.png');
+    background:url('../../img/fundo-login.png');
     background-size: cover;
     background-repeat: no-repeat;
     border-radius:15px;

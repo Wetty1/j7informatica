@@ -87,7 +87,7 @@
 #product .p-img-father{
     width:300px;
     height:300px;
-    /*background:url('../../img/produto1.png');*/
+    background:url('../../img/produto1.png');
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;

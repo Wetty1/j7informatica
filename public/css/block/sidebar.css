@@ -78,7 +78,7 @@ body {
     position: fixed;
     width:15rem;
     min-height: 100%;
-    background:url('/public/img/fundo-login.png');
+    background:url('../../img/fundo-login.png');
     background-size:cover;
     background-repeat:no-repeat;
     margin-left: -15rem;

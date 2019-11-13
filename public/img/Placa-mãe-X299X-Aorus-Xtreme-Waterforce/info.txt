@@ -1,0 +1,15 @@
+R$ 6325.90
+
+CPU:
+
+- Suporte para 9ª e 8ª Geração Intel ® Core i9 / Intel ® Core i7 / Intel Core i5 / Intel Core i3 / Intel Pentium processadores / Intel Celeron  processadores no pacote LGA1151
+
+- Cache L3 varia de acordo com a CPU
+
+(Por favor, consulte "Lista de Suporte da CPU" para mais informações.)
+
+ 
+
+Chipset
+
+- Intel Express Chipset Z390
