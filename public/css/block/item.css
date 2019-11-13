@@ -1,5 +1,5 @@
 .admin-modal .modal-content{
-    background:url('../../img/fundo-login.png');
+    background:url('/public/img/fundo-login.png');
     background-size: cover;
     background-repeat: no-repeat;
     border-radius:15px;
@@ -71,7 +71,7 @@
     border:1px dashed #fff;
 }
 
-#admin-cards{
+#admin-cards {
     position:relative;
     margin-top:3rem;
 }

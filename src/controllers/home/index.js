@@ -22,7 +22,7 @@ router.get('/produto/:id', async (req, res) => {
 router.get('/pesquisa', async (req, res) => {
     console.log(req.query.search)
 
-    const produtos = await Produtos.find({nome: {$regex: req.query.seach}})
+    const produtos = await Produtos.find({nome: new RegExp('^'+req.query.search+'$', "i")})
 
     console.log(produtos)
     

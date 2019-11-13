@@ -1,4 +1,4 @@
- <header id="header">
+<header id="header">
     <nav class="navbar navbar-expand-lg navbar-light container-fluid">
         <a href="/" class="navbar-brand">j7 eShop</a>
         
@@ -30,19 +30,19 @@
             <div class="col-md-8 col-lg-8">
                 <ul class="p-list">
                     <li class="p--star">
-                        <span  class="p-img-father" alt="Produto principal"></span>
+                        <span class="p-img-father" alt="Produto principal" style="background-image: url(/files/{{produto.thumbnail}});"></span>
                     </li>
 
                     <li class="p-block">
-                        <span data-pic="url(public/img/produto1.png)"  class="p-img one" alt="produto filho"></span>
+                        <span data-pic="url(/files/{{produto.thumbnail}})"  class="p-img one" alt="produto filho" style="background-image: url(/files/{{produto.thumbnail}});"></span>
                     </li>
 
                     <li class="p-block">
-                        <span  data-pic="url(public/img/produto2.png)"class="p-img two" alt="produto filho"></span>
+                        <span  data-pic="url(/files/{{produto.thumbnail2}})"class="p-img two" alt="produto filho" style="background-image: url(/files/{{produto.thumbnail2}});"></span>
                     </li>
 
                     <li class="p-block">
-                        <span data-pic="url(public/img/produto3.png)" class="p-img three" alt="produto filho"></span>
+                        <span data-pic="url(/files/{{produto.thumbnail3}})" class="p-img three" alt="produto filho" style="background-image: url(/files/{{produto.thumbnail3}});"></span>
                     </li>
                 </ul>
             </div>
@@ -259,56 +259,3 @@
 
     </div>
 </section>
-
-
-<footer id="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="f-borda col-md-3 d-flex flex-column align-items-center">
-                <div class="f-logo-rodape">
-                    <img src="/public/img/logo-rodape.png" alt="Logo-rodape" class="logo-rodape">
-                    <p class="f__title">
-                        @J7 Informática 2019
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-md-3 d-flex flex-column justify-content-center align-items-center">
-                
-                <div class="team">
-                    <h2 class="f__title">Equipe j7Info</h2>
-                    
-                    <p>Wesley De Souza</p>
-                    <p>Raylson Andrews</p>
-                    <p>Marcos Vinicius</p>
-                    <p>Paulo Teixeira</p>
-                    <p>Leandro De Paiva</p>
-                    <p>Lucas Da Rocha</p>
-                </div>
-            </div>
-
-            <div class="f-borda col-md-3 d-flex flex-column justify-content-center align-items-center">
-                <div class="f-participation">
-                    <h2 class="f__title">Participação</h2>
-                    <p>Desenvolvedor</p>
-                    <p>Consultoria</p>
-                    <p>Desenvolvedor</p>
-                    <p>Consultoria</p>
-                    <p>Designer</p>
-                    <p>Consultoria</p>
-                    
-
-                </div>
-            </div>
-
-            <div class=" col-md-3 d-flex flex-column justify-content-center align-items-center">
-                <h2 class="f__title">Contatos</h2>
-                <div class="social">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>

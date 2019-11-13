@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     filename: (req, file, cb) => {
         const ext = path.extname(file.originalname)
         const name = path.basename(file.originalname, ext)
-        cb (null, `${name}-${req.body.nome}${ext}`)
+        cb (null, `${name}-${Data.now()}${ext}`)
     }
 })
 
@@ -37,12 +37,10 @@ EDITAR
 /* LISTAGEM */
 
 router.get('/produtos', Produtos.all)
-// router.get('/pedidos', Pedidos.all)
 
 /* ADICIONAR */
 
 router.post('/addproduto', upload, Produtos.store)
-// router.post('/pedidos', Pedidos.store)
 
 router.post('/addestoque', Produtos.addEstoque)
 

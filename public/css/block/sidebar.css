@@ -6,13 +6,13 @@ body {
     padding:.5rem 2.7rem;
     box-sizing:border-box;
     width:400px;
-    left:14.5rem;
+    left:9.5rem;
     right:0;  
 }
 
 #wrapper #page-content-wrapper #header .icon{
-    left:14.88rem;
-    top:1.15rem;
+    left:9.88rem;
+    top:1.215rem;
 }
 
 #wrapper #page-content-wrapper #header .navbar{
@@ -22,7 +22,7 @@ body {
 #wrapper #page-content-wrapper #header .h__text--admin{
     color:#fff;
     position:absolute;
-    left:8rem;
+    left:4rem;
     top:1.288rem;
     font-family: 'Open Sans Condensed', sans-serif;
     font-weight: 700;
@@ -47,7 +47,9 @@ body {
 
 #wrapper #header{
     width:100%;
-    height:4rem;
+    display:block;
+    margin:0 0 0 auto;
+    height:auto;
     position:sticky;
     z-index:1001;
     top:0;
@@ -76,11 +78,10 @@ body {
     position: fixed;
     width:15rem;
     min-height: 100%;
-    background:url('../../img/fundo-login.png');
+    background:url('/public/img/fundo-login.png');
     background-size:cover;
     background-repeat:no-repeat;
     margin-left: -15rem;
-    /* margin-left:-20%; */
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
@@ -103,25 +104,20 @@ body {
     width: 15rem;
 }
 
-#page-content-wrapper {
-    width:83.3%;
+#page-content-wrapper{
+    width:calc(100% - 15rem);
     transition:.25s;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
+    display: block;
+    margin:0 0 0 auto;
 }
 
 @media (min-width: 768px) {
     #sidebar-wrapper {
         margin-left: 0;
         height: 100%;
+        z-index:1001;
     }
-
-    #page-content-wrapper {
-        margin:0 0 0 auto;
-    }
-
+    
     #wrapper.toggled #page-content-wrapper{
         width:100%;
     }
@@ -131,4 +127,20 @@ body {
     }
 }
 
+@media(max-width:767.9px){
+    #page-content-wrapper{
+        width:100%;
+    }
+    #header{
+        width:100%;
+    }
+
+    #wrapper.toggled #page-content-wrapper{
+        width:calc(100% - 15rem);
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0em;
+    }
+}
 
