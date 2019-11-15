@@ -7,6 +7,7 @@
             transform:translateX(19rem) !important;
         }
     </style>
+    <title>Página Inicial- E-commerce</title>
     <nav class="navbar navbar-expand-lg navbar-light container-fluid">
         <a href="/" class="navbar-brand">j7 eShop</a>
         
@@ -150,7 +151,7 @@
             {{#each produtos}}
                 <div class="col-md-4 mt-3">
                     <div class="product-card" id="item{{@index}}">
-                        <a href="produto/{{_id}}" >
+                        <a href="produto/{{_id}}" style="text-decoration: none;">
                             <h1>{{nome}}</h1>
                             <p>{{descricao}}</p>
                             <img id="image{{@index}}" src="/files/{{thumbnail}}" height="300px" width="100%" alt="">
@@ -164,9 +165,9 @@
                         </div>
                         <div class="product-info">
                             <div class="product__price">R$ {{valor}},00</div>
-                            <button type="button" action="produto.html" class="product__button">
-                                Comprar
-                            </button>
+                            <form action="produto/{{_id}}" method="get" class="form-card">
+                                <button type="submit" action="produto.html" class="product__button">Comprar</button>
+                            </form>
                         </div>
                     </div>
                 </div>

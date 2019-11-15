@@ -198,6 +198,10 @@
     align-items: center;
 }
 
+#my-cards .product-card .form-card{
+    margin-left:auto;
+}
+
 #my-cards .product-card .product__button{
     margin-left:auto;
     text-decoration: none;
