@@ -1,20 +1,20 @@
 const mongoose = require('mongoose')
 
-const Compra = mongoose.Schema({
+const Item_carrinho = mongoose.Schema({
     usuario: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
         required: true,
     },
-    data: {
-        type: Date,
-        default: Date.now(),
+    produto: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'produto',
         required: true
     },
-    valorTotal: {
+    quantidade: {
         type: Number,
         required:true,
     },
 })
 
-module.exports = mongoose.model('compra', Compra)
+module.exports = mongoose.model('item_carrinho', Item_carrinho)

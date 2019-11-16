@@ -4,6 +4,7 @@ const Produtos = require('./../../models/Produto')
 const Saida = require('../../models/Compra')
 const Entrada = require('../../models/Entrada_produto')
 const Compra = require('../../models/Compra')
+const Item_carrinho = require('../../models/Item_carrinho')
 
 router.get('/', async (req, res) => {
     let produtos = await Produtos.find({ativo: true})
@@ -73,6 +74,13 @@ router.get('/pesquisa', async (req, res) => {
 router.post('/compra', async (req, res) => {
     Compra.create({
         
+    })
+})
+
+router.post('/addcarrinho', async (req, res) => {
+    //id usuario
+    Item_carrinho.create({
+
     })
 })
 
