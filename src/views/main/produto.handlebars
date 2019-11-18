@@ -1,4 +1,5 @@
 <header id="header">
+    <link rel="stylesheet" href="/public/css/templates/produto.css">
     <nav class="navbar navbar-expand-lg navbar-light container-fluid">
         <a href="/" class="navbar-brand">j7 eShop</a>
         
@@ -10,7 +11,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="/" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
                 <li class="nav-item"><a href="/user/login" target="_blank"class="nav-link"><i class="fas fa-user"></i> login</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+                <li class="nav-item"><a href="/compra/carrinho" class="nav-link"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
                 <li class="nav-item"><a href="#footer" class="nav-link"><i class="fas fa-mobile-alt"></i> Contato</a></li>
                 <div class="active"></div>
                 <li class="nav-item">
@@ -66,7 +67,8 @@
 
                         <div class="col-md-6">
                             <label for="qtd">Quantidade</label>
-                            <select class="form-control-sm" name="qtd" id="qtd">
+                            <input class="form-control-sm" type="number" name="qtd" id="qtd" value="1" min="1" max="{{produto.estoque}}" onchange="valorTotal()">
+                            {{!-- <select class="form-control-sm" name="qtd" id="qtd">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -77,7 +79,7 @@
                                 <option value="8">8</option>
                                 <option value="9">9</option>
                                 <option value="10">10</option>
-                            </select>
+                            </select> --}}
                         </div>
 
                         <div class="col-md-12">
@@ -92,14 +94,33 @@
                             </div>
 
                             <div class="col-md-5">
-                                <p class="p__result">{{produto.valor}}</p>
+                                
+                                <p class="p__result" id="result">R$ {{produto.valor}},00</p>
                                 <!-- <input type="text" placeholder="1800,00" readonly class="form-control form-control-sm"> -->
                             </div>
                         </div>
                         
                         <div class="col-md-12">
-                            <button type="button" class="btn btn-efect-two">Comprar</button>
-                            <button type="button" class="btn btn-default p-2">Adicionar ao carrinho</button>
+                            {{#if user}}
+                                <form action="/compra" method="post" class="form-compra">
+                                    <input type="hidden" name="id-produto" value="{{_id}}">
+                                    <input type="hidden" name="total" id="total" value="{{produto.valor}}">
+
+                                    <button type="submit" class="btn btn-efect-two">Comprar</button>
+                                </form>
+                                <form action="compra/addcarrinho" method="post">
+                                <input type="hidden" name="id-produto" value="{{_id}}">
+                                    <input type="hidden" name="total" id="total" value="{{produto.valor}}"> 
+                                    <button type="button" class="btn btn-default p-2">Adicionar ao carrinho</button>
+                                </form>
+                            {{else}}
+                                <form action="/compra" method="post" class="form-compra">
+                                    <button type="submit" class="btn btn-efect-two" data-toggle="tooltip" data-placement="bottom" title="Você ainda não está logado" disabled>Comprar</button>
+                                </form>
+                                <form action="compra/addcarrinho" method="post">
+                                    <button type="button" class="btn btn-default p-2" data-toggle="tooltip" data-placement="bottom" title="Você ainda não está logado" disabled>Adicionar ao carrinho</button>
+                                </form>
+                            {{/if}}
                         </div>
                         <!-- fim da linha  -->
                     </div>
@@ -259,3 +280,16 @@
 
     </div>
 </section>
+
+<script>
+    function valorTotal(){
+        let valorUnitario = {{produto.valor}}
+        let qtd = document.getElementById('qtd').value
+        console.log(valorUnitario, qtd)
+
+        let result = valorUnitario * qtd
+
+        document.getElementById('result').innerHTML = "R$ " + result + ",00"
+    }
+
+</script>
