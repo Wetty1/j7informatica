@@ -10,7 +10,30 @@
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="/" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
-                <li class="nav-item"><a href="/user/login" target="_blank"class="nav-link"><i class="fas fa-user"></i> login</a></li>
+                {{#if user}}
+                    {{#if admin}}
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"><i class="fas fa-user"></i> ADMIN</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href=""><i class="fas fa-user"></i> {{user}}</a>
+                                <a class="dropdown-item" href="/admin/produtos"><i class="fas fa-user-cog"></i> Painel</a>
+                                <a class="dropdown-item" href="/user/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </li>
+                    {{else}}
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"><i class="fas fa-user"></i> User</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href=""><i class="fas fa-user"></i> {{user}}</a>
+                                <a class="dropdown-item" href="/meuspedidos"><i class="fas fa-shopping-basket"></i> Meus pedidos</a>
+                                <a class="dropdown-item" href="/user/meusdados"><i class="fas fa-address-book"></i> Meus dados</a>
+                                <a class="dropdown-item" href="/user/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </li>
+                    {{/if}}
+                {{else}}
+                    <li class="nav-item"><a href="/user/login" class="nav-link"><i class="fas fa-user"></i> login</a></li>
+                {{/if}}
                 <li class="nav-item"><a href="/compra/carrinho" class="nav-link"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
                 <li class="nav-item"><a href="#footer" class="nav-link"><i class="fas fa-mobile-alt"></i> Contato</a></li>
                 <div class="active"></div>
@@ -103,14 +126,14 @@
                         <div class="col-md-12">
                             {{#if user}}
                                 <form action="/compra" method="post" class="form-compra">
-                                    <input type="hidden" name="id-produto" value="{{_id}}">
+                                    <input type="hidden" name="id_produto" value="{{produto._id}}">
                                     <input type="hidden" name="total" id="total" value="{{produto.valor}}">
+                                    <input type="hidden" name="qtd" class="qtd_prod" value="1">
 
                                     <button type="submit" class="btn btn-efect-two">Comprar</button>
                                 </form>
                                 <form action="compra/addcarrinho" method="post">
-                                <input type="hidden" name="id-produto" value="{{_id}}">
-                                    <input type="hidden" name="total" id="total" value="{{produto.valor}}"> 
+                                    <input type="hidden" name="id-produto" value="{{produto._id}}">
                                     <button type="button" class="btn btn-default p-2">Adicionar ao carrinho</button>
                                 </form>
                             {{else}}
@@ -282,9 +305,14 @@
 </section>
 
 <script>
+    window.onload = function () {
+        valorTotal()
+    }
     function valorTotal(){
         let valorUnitario = {{produto.valor}}
         let qtd = document.getElementById('qtd').value
+        document.getElementsByClassName('qtd_prod').value = qtd
+        console.log(document.getElementsByClassName('qtd_prod').value)
         console.log(valorUnitario, qtd)
 
         let result = valorUnitario * qtd

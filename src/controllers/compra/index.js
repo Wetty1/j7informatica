@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const Compra = require('../../models/Compra')
 const Item_carrinho = require('../../models/Item_carrinho')
+const Item_compra = require('../../models/Item_compra')
 
 router.get('/carrinho', (req, res) => {
     //const id_user = req.user._id
@@ -11,13 +12,18 @@ router.get('/carrinho', (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+    if(!req.user){
+        res.redirect('/')
+        return;
+    }
+    
     Compra.create({
-        usuario: req.body.id_usuario,
+        usuario: req.user._id,
         data: Date.now(),
-        valorTotal: valorTotal,
+        valorTotal: req.body.total,
     }).then(compra => {
-        console.log(compra)
-        Item_carrinho.create({
+        console.log(req.body.id_produto)
+        Item_compra.create({
             compra: compra._id,
             produto: req.body.id_produto,
             quantidade: req.body.qtd,
@@ -35,6 +41,5 @@ router.post('/addcarrinho', async (req, res) => {
 
     res.redirect('/')
 })
-
 
 module.exports = router
