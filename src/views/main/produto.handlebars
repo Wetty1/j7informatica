@@ -11,7 +11,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="/" class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
                 <li class="nav-item"><a href="/user/login" target="_blank"class="nav-link"><i class="fas fa-user"></i> login</a></li>
-                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
+                <li class="nav-item"><a href="/compra/carrinho" class="nav-link"><i class="fas fa-shopping-cart"></i> Carrinho</a></li>
                 <li class="nav-item"><a href="#footer" class="nav-link"><i class="fas fa-mobile-alt"></i> Contato</a></li>
                 <div class="active"></div>
                 <li class="nav-item">
@@ -101,13 +101,26 @@
                         </div>
                         
                         <div class="col-md-12">
-                            <form action="/compra" method="post">
-                                <input type="hidden" name="id-produto" value="{{_id}}">
-                                <input type="hidden" name="total" id="total" value="{{produto.valor}}">
+                            {{#if user}}
+                                <form action="/compra" method="post" class="form-compra">
+                                    <input type="hidden" name="id-produto" value="{{_id}}">
+                                    <input type="hidden" name="total" id="total" value="{{produto.valor}}">
 
-                                <button type="submit" class="btn btn-efect-two">Comprar</button>
-                            </form>
-                            <button type="button" class="btn btn-default p-2">Adicionar ao carrinho</button>
+                                    <button type="submit" class="btn btn-efect-two">Comprar</button>
+                                </form>
+                                <form action="compra/addcarrinho" method="post">
+                                <input type="hidden" name="id-produto" value="{{_id}}">
+                                    <input type="hidden" name="total" id="total" value="{{produto.valor}}"> 
+                                    <button type="button" class="btn btn-default p-2">Adicionar ao carrinho</button>
+                                </form>
+                            {{else}}
+                                <form action="/compra" method="post" class="form-compra">
+                                    <button type="submit" class="btn btn-efect-two" data-toggle="tooltip" data-placement="bottom" title="Você ainda não está logado" disabled>Comprar</button>
+                                </form>
+                                <form action="compra/addcarrinho" method="post">
+                                    <button type="button" class="btn btn-default p-2" data-toggle="tooltip" data-placement="bottom" title="Você ainda não está logado" disabled>Adicionar ao carrinho</button>
+                                </form>
+                            {{/if}}
                         </div>
                         <!-- fim da linha  -->
                     </div>
