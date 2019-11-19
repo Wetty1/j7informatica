@@ -22,7 +22,7 @@ module.exports = {
             ])
             
             let estoque = {}
-            if(saidas.length > 1) {
+            if(saidas.length > 0) {
                 estoque = entradas[0].quantidade - saidas[0].quantidade
             } else { 
                 estoque = entradas[0].quantidade

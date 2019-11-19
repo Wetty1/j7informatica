@@ -8,10 +8,45 @@ const Compra = require('../../models/Compra')
 router.get('/', async (req, res) => {
     let produtos = await Produtos.find({ativo: true})
 
+    let prodsx = []
+    for(let produto of produtos) {
+        let obj = {}
+        const entradas = await Entrada.aggregate([
+            { $match: {produto: produto._id}},
+            { $group: {_id: produto._id, quantidade: {$sum: "$quantidade"}}}
+        ])
+
+        const saidas = await Saida.aggregate([
+            { $match: {produto: produto._id}},
+            { $group: {_id: produto._id, quantidade: {$sum: "$quantidade"}}}
+        ])
+
+        let estoque = {}
+        if(saidas.length > 0) {
+            estoque = entradas[0].quantidade - saidas[0].quantidade
+        } else { 
+            estoque = entradas[0].quantidade
+        }
+        console.log(estoque)
+        obj = {
+            _id: produto._id,
+            nome: produto.nome,
+            descricao: produto.descricao,
+            valor: produto.valor,
+            thumbnail: produto.thumbnail,
+            thumbnail2: produto.thumbnail2,
+            thumbnail3: produto.thumbnail3,
+            ativo: produto.ativo,
+        }
+        obj.estoque = estoque
+        if(estoque > 0)
+            prodsx.push(obj)
+    }
+
     if(req.isAuthenticated()) {
-        res.render('main/index', { user: req.user.nome, admin: req.user.nivel, produtos: produtos})
+        res.render('main/index', { user: req.user.nome, admin: req.user.nivel, produtos: prodsx})
     } else {
-        res.render('main/index', {produtos: produtos})
+        res.render('main/index', {produtos: prodsx})
     }
 })
 
@@ -30,14 +65,14 @@ router.get('/produto/:id', async (req, res) => {
         { $match: {produto: produto._id}},
         { $group: {_id: produto._id, quantidade: {$sum: "$quantidade"}}}
     ])
-    
+
     let estoque = {}
-    if(saidas.length > 1) {
+    if(saidas.length > 0) {
         estoque = entradas[0].quantidade - saidas[0].quantidade
     } else { 
         estoque = entradas[0].quantidade
     }
-
+    console.log(estoque)
     obj = {
         _id: produto._id,
         nome: produto.nome,
@@ -52,7 +87,7 @@ router.get('/produto/:id', async (req, res) => {
     prodsx.push(obj)
 
 
-    console.log(produto)
+    console.log(obj)
     if(req.isAuthenticated()) {
         res.render('main/produto', { user: req.user.nome, admin: req.user.nivel, produto: obj})
     } else {

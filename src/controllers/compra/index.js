@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
         data: Date.now(),
         valorTotal: req.body.total,
     }).then(compra => {
-        console.log(req.body.id_produto)
+        console.log('qtd', req.body.qtd)
         Item_compra.create({
             compra: compra._id,
             produto: req.body.id_produto,
