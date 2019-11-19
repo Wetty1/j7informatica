@@ -311,12 +311,13 @@
     function valorTotal(){
         let valorUnitario = {{produto.valor}}
         let qtd = document.getElementById('qtd').value
-        document.getElementsByClassName('qtd_prod').value = qtd
+        document.getElementsByClassName('qtd_prod')[0].value = qtd
         console.log(document.getElementsByClassName('qtd_prod').value)
         console.log(valorUnitario, qtd)
 
         let result = valorUnitario * qtd
 
+        document.getElementById('total').value = Number(result)
         document.getElementById('result').innerHTML = "R$ " + result + ",00"
     }
 

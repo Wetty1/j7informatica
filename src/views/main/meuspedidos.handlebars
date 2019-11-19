@@ -66,36 +66,41 @@
         <div class="container">
             <div class="wrapper">
                 <!-- OBS: cada linha está inserido um produto no carrinho  -->
+
+                {{#each compras}}
                 <!-- 1 linha (produto do carrinho)  -->
-                <div class="row">
-                    <div class="col-md-2 col-sm-12">
-                        <a href="produto.html">
-                            <img src="/public/img/Placa-mãe-X299X-Aorus-Xtreme-Waterforce/0.png" alt="product" class="c__img">
-                        </a>
-                    </div>
-    
-                    <div class="col-md-5 col-sm-12">
-                        <p class="c-name">Nome do produto pode ser grande - sem problemas</p>
-                        <span>Até 12 vezes sem juros <strong class="ml-3">Frete gratis</strong></span>
-                        <div class="c-product">     
-                            <a href="#">Comprar agora</a>
-                            <a href="#">Excluir</a>
+                    <div class="row">
+                        {{!-- <div class="col-md-2 col-sm-12">
+                            <a href="/produto/{{produto}}">
+                                <img src="/public/img/Placa-mãe-X299X-Aorus-Xtreme-Waterforce/0.png" alt="product" class="c__img">
+                            </a>
+                        </div> --}}
+        
+                        <div class="col-md-7 col-sm-12">
+                            <p class="c-name">ID da compra: {{_id}}</p>
+                            <span>Data da compra: <strong class="ml-3 formatdata">{{data}}</strong></span>
+                            <div class="c-product">     
+                                <a href="#">Emitir comprovante</a>
+                                <a href="#">Detalhe</a>
+                            </div>
+                        </div>
+        
+                        <div class="col-md-2 col-sm-12 align-self-center">
+                            {{!-- <div class="c-qtd">
+                                <span> 1 </span>
+                                <input type="button" value="-">
+                                <input type="button" value="+">
+                                <p class="c-information">Último disponível</p>
+                            </div> --}}
+                        </div>
+        
+                        <div class="col-md-3 col-sm-12 align-self-center">
+                            <h2 class="c-price">R$ {{valorTotal}},00</h2>
                         </div>
                     </div>
-    
-                    <div class="col-md-2 col-sm-12 align-self-center">
-                        <div class="c-qtd">
-                            <span>1</span>
-                            <input type="button" value="-">
-                            <input type="button" value="+">
-                            <p class="c-information">Último disponível</p>
-                        </div>
-                    </div>
-    
-                    <div class="col-md-3 col-sm-12 align-self-center">
-                        <h2 class="c-price">R$ 200,00</h2>
-                    </div>
-                </div>
+                {{/each}}
+
+{{!-- 
                 <!-- 2 linha (produto do carrinho)  -->
                 <div class="row mt-5">
                     <div class="col-md-2">
@@ -123,7 +128,7 @@
                     </div>
     
                     <div class="col-md-3 align-self-center">
-                        <h2 class="c-price">R$ 500,00</h2>
+                        <h2 class="c-price">R$ 2,00</h2>
                     </div>
                 </div>
                 <!-- 3 linha (produto do carrinho)  -->
@@ -155,30 +160,8 @@
                     <div class="col-md-3 align-self-center">
                         <h2 class="c-price">R$ 700,00</h2>
                     </div>
-                </div>
+                </div> --}}
                 <hr class="mt-5">
-                <!-- RESULTADO DOS PEDIDOS NO CARRINHO JUNTAMENTE COM O VALOR FINAL E ACRÉSCIMO DO FRETE  -->
-                <div class="c-confirmBuy">
-                    <div class="c-qtdProduct">
-                        <p>Produtos (4)</p> 
-                        <span>R$ 1542,00</span>
-                    </div>
-                    <div class="c-address"> 
-                        <p class="dropdown-toggle">Envio para Santa agostinho 376, Caucaia</p>
-                        <span>R$ 49,90</span>
-                    </div>
-                    <div class="c-values">
-                        <p class="c__tot">Total</p>
-                        <span class="c-valueFinal">R$ 1591,09</span>
-                    </div>
-                </div>
-
-                <hr>
-                <div class="c-buy--btn">
-                    <button class="btn btn-primary">Continuar a compra</button>
-                </div>
-
-            </div>
         </div>
     </section>
 
@@ -187,5 +170,22 @@
     <script src="/public/js/bootstrap.min.js"></script>
     <script src="/public/js/efect-scroll.js"></script>
     <script src="/public/js/card-images.js"></script>
+
+    <script>
+        window.onload = function () {
+            formatData()
+        }
+        function formatData () {
+            let datas = document.getElementsByClassName('formatdata')
+
+            for(let i in datas) {
+                let dataAux = new Date(datas[i].innerHTML)
+                //dataAux.setHours(dataAux.getHours() + 3)
+                
+                console.log(dataAux.toLocaleString('pt-BR'))
+                datas[i].innerHTML = dataAux.toLocaleString('pt-BR')
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Produtos = require('./../../models/Produto')
-const Saida = require('../../models/Compra')
+const Saida = require('../../models/Item_compra')
 const Entrada = require('../../models/Entrada_produto')
 const Compra = require('../../models/Compra')
 
