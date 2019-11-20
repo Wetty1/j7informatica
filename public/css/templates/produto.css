@@ -274,3 +274,18 @@
 #footer{
     margin-top:8rem;
 }
+
+#product .p-quantity + input{
+    border:none;
+    border:1px solid rgba(0,0,0,.2);
+    border-radius:10px;
+    outline:none;
+}
+#product .p-quantity{
+    font-family:'Lato', sans-serif; 
+    font-size:1rem;
+    font-weight:600;
+}
+#product .form-compra{
+    display:flex;
+}

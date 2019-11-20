@@ -1,10 +1,10 @@
 <header id="header">
     <style>
         #header .nav-item:nth-child(3):hover ~ .active{
-            transform:translateX(12.5rem) !important;
+            {{!-- transform:translateX(12.5rem); --}}
         }
         #header .nav-item:nth-child(4):hover ~ .active{
-            transform:translateX(19rem) !important;
+            {{!-- transform:translateX(19rem); --}}
         }
     </style>
     <title>Página Inicial- E-commerce</title>
@@ -151,22 +151,22 @@
             {{#each produtos}}
                 <div class="col-md-4 mt-3">
                     <div class="product-card" id="item{{@index}}">
-                        <a href="produto/{{_id}}" style="text-decoration: none;">
-                            <h1>{{nome}}</h1>
-                            <p>{{descricao}}</p>
+                        <h1>{{nome}}</h1>
+                        <p>{{descricao}}</p>
+                        <a href="produto/{{_id}}">
                             <img id="image{{@index}}" src="/files/{{thumbnail}}" height="300px" width="100%" alt="">
                         </a>
                         <div class="product-images">
                             <img src="/files/{{thumbnail}}"  alt="">
-                            <img src="files/{{thumbnail2}}" alt="">
-                            <img src="files/{{thumbnail3}}" alt="">
-                            <img src="files/{{thumbnail4}}" alt="">
+                            <img src="/files/{{thumbnail2}}" alt="">
+                            <img src="/files/{{thumbnail3}}" alt="">
+                            <img src="/files/{{thumbnail4}}" alt="">
                             <div class="start"></div>
                         </div>
                         <div class="product-info">
                             <div class="product__price">R$ {{valor}},00</div>
                             <form action="produto/{{_id}}" method="get" class="form-card">
-                                <button type="submit" action="produto.html" class="product__button">Comprar</button>
+                                <button type="submit" class="product__button">Comprar</button>
                             </form>
                         </div>
                     </div>
@@ -175,22 +175,22 @@
                 <script>
                     $('#item{{@index}} img:nth-child(1)').on('click',function(){    
                         $('#item{{@index}} .start').css({left:'7%'})
-                        $('#image{{@index}}').attr('src','files/{{thumbnail}}')
+                        $('#image{{@index}}').attr('src','/files/{{thumbnail}}')
                     })
 
                     $('#item{{@index}} img:nth-child(2)').on('click',function(){
                         $('#item{{@index}} .start').css({left:'30%'})
-                        $('#image{{@index}}').attr('src','files/{{thumbnail2}}')
+                        $('#image{{@index}}').attr('src','/files/{{thumbnail2}}')
                     })
 
                     $('#item{{@index}} img:nth-child(3)').on('click',function(){
                         $('#item{{@index}} .start').css({left:'51%'})
-                        $('#image{{@index}}').attr('src','files/{{thumbnail3}}')
+                        $('#image{{@index}}').attr('src','/files/{{thumbnail3}}')
                     })
 
                     $('#item{{@index}} img:nth-child(4)').on('click',function(){
                         $('#item{{@index}} .start').css({left:'72%'})
-                        $('#image{{@index}}').attr('src','files/{{thumbnail4}}')
+                        $('#image{{@index}}').attr('src','/files/{{thumbnail4}}')
                     })
 
                 </script>

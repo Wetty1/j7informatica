@@ -20,7 +20,7 @@ module.exports = (passport) =>  {
     }))
 
     router.get('/register', (req,res) => {
-        res.render('auth/cadastro')
+        res.render('auth/cadastro', {layout: false})
     })
 
     router.post('/register', passport.authenticate('local-singup', {

@@ -27,7 +27,6 @@ router.get('/', async (req, res) => {
         } else { 
             estoque = entradas[0].quantidade
         }
-        console.log(estoque)
         obj = {
             _id: produto._id,
             nome: produto.nome,
@@ -36,6 +35,7 @@ router.get('/', async (req, res) => {
             thumbnail: produto.thumbnail,
             thumbnail2: produto.thumbnail2,
             thumbnail3: produto.thumbnail3,
+            thumbnail4: produto.thumbnail4,
             ativo: produto.ativo,
         }
         obj.estoque = estoque
@@ -43,8 +43,25 @@ router.get('/', async (req, res) => {
             prodsx.push(obj)
     }
 
+    // const destaque1 = Produtos.findOne({}).sort({valor: -1})[0]
+    // console.log('destc1:', destaque1)
+
+    // const destaque2 = Produtos.findOne({}).sort({valor: 1})[0]
+    // console.log('destc2:', destaque2)
+
+    // const saidas = await Saida.aggregate([
+    //     { $match: {produto: produtos._id}},
+    //     { $group: {_id: produto._id, quantidade: {$sum: "$quantidade"}}}
+    // ])
+    // const destaque3 = saidas.sort({quantidade: -1})
+    // console.log('destc3:',destaque3)
+
     if(req.isAuthenticated()) {
-        res.render('main/index', { user: req.user.nome, admin: req.user.nivel, produtos: prodsx})
+        res.render('main/index', { 
+            user: req.user.nome, 
+            admin: req.user.nivel, 
+            produtos: prodsx
+        })
     } else {
         res.render('main/index', {produtos: prodsx})
     }

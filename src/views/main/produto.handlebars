@@ -1,5 +1,6 @@
 <header id="header">
     <link rel="stylesheet" href="/public/css/templates/produto.css">
+    
     <nav class="navbar navbar-expand-lg navbar-light container-fluid">
         <a href="/" class="navbar-brand">j7 eShop</a>
         
@@ -68,6 +69,10 @@
                     <li class="p-block">
                         <span data-pic="url(/files/{{produto.thumbnail3}})" class="p-img three" alt="produto filho" style="background-image: url(/files/{{produto.thumbnail3}});"></span>
                     </li>
+
+                    <li class="p-block">
+                        <span class="p-img for" alt="Produto principal" style="background-image: url(/files/{{produto.thumbnail}});"></span>
+                    </li>
                 </ul>
             </div>
 
@@ -89,20 +94,8 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="qtd">Quantidade</label>
+                            <label for="qtd" class="p-quantity">Quantidade</label>
                             <input class="form-control-sm" type="number" name="qtd" id="qtd" value="1" min="1" max="{{produto.estoque}}" onchange="valorTotal()">
-                            {{!-- <select class="form-control-sm" name="qtd" id="qtd">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select> --}}
                         </div>
 
                         <div class="col-md-12">
@@ -125,19 +118,20 @@
                         
                         <div class="col-md-12">
                             {{#if user}}
-                                <form action="/compra" method="post" class="form-compra">
+                                <div class="form-compra">
+                                    <form action="/compra" method="post" >
                                     <input type="hidden" name="id_produto" value="{{produto._id}}">
                                     <input type="hidden" name="total" id="total" value="{{produto.valor}}">
                                     <input type="hidden" name="qtd" class="qtd_prod" value="1">
-
                                     <button type="submit" class="btn btn-efect-two">Comprar</button>
-                                </form>
-                                <form action="compra/addcarrinho" method="post">
-                                    <input type="hidden" name="id-produto" value="{{produto._id}}">
-                                    <button type="button" class="btn btn-default p-2">Adicionar ao carrinho</button>
-                                </form>
+                                    </form>
+                                    <form action="compra/addcarrinho" method="post">
+                                        <input type="hidden" name="id-produto" value="{{produto._id}}">
+                                        <button type="button" class="btn btn-default p-2">Adicionar ao carrinho</button>
+                                    </form>
+                                </div>
                             {{else}}
-                                <form action="/compra" method="post" class="form-compra">
+                                <form action="/compra" method="post" class="mt-2 form-compra">
                                     <button type="submit" class="btn btn-efect-two" data-toggle="tooltip" data-placement="bottom" title="Você ainda não está logado" disabled>Comprar</button>
                                 </form>
                                 <form action="compra/addcarrinho" method="post">
@@ -156,153 +150,205 @@
 </section>
 
 <section id="commit">
-    <div class="container">
-        <div class="col-md-12">
-                <h1 class="c__title">Reviews</h1>
-        </div>
-        <section class="client">
-            <div class="row">
-                <div class="col-md-4">
-                    <!-- inicio avatar  -->
-                    <div class="avatar">
-                        <div class="col-md-4">
-                            <img src="/public/img/me.png" alt="Avatar" class="avatar__img">
-                        </div>  
-                        
-                        <div class="col-md-8">
-                            <h2 class="c__client">Marcos Vinicius</h2>
-                            <small class="c__date">02/11/2019</small>    
-                            <div class="mt-1">
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                            </div>
-                        </div>
-                        <!-- fim avatar  -->
-                    </div>
-                    <!-- fim da coluna  -->
-                </div>
-            
-                <div class="col-md-8 " style="margin-top:2rem;">
-                    <p class="c__commits">
-                        Esse site ta muito foda! 
-                        Parabéns aos envolvidos.
-                    </p>
-                    <p class="c__commits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente earum molestiae impedit cumque, nobis provident unde expedita. Deleniti, in maxime! Illo ea vitae, eum exercitationem repellendus officiis delectus in?</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="client">
-                <div class="row">
-                    <div class="col-md-4">
-                        <!-- inicio avatar  -->
-                        <div class="avatar">
-                            <div class="col-md-4">
-                                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Avatar" class="avatar__img">
-                            </div>  
-                            
-                            <div class="col-md-8">
-                                <h2 class="c__client">Lucas Rocha</h2>
-                                <small class="c__date">02/11/2019</small>    
-                                <div class="mt-1">
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="fas fa-star"></i></span>
-                                    <span><i class="far fa-star"></i></span>
-                                    <span><i class="far fa-star"></i></span>
-                                </div>
-                            </div>
-                            <!-- fim avatar  -->
-                        </div>
-                        <!-- fim da coluna  -->
-                    </div>
-                
-                    <div class="col-md-8 " style="margin-top:2rem;">
-                        <p class="c__commits">
-                            Esse site ta muito foda! 
-                            Parabéns aos envolvidos.
-                        </p>
-                        <p class="c__commits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente earum molestiae impedit cumque, nobis provident unde expedita. Deleniti, in maxime! Illo ea vitae, eum exercitationem repellendus officiis delectus in?</p>
-                    </div>
-                </div>
-        </section>
-
-        <section class="client">
-            <div class="row">
-                <div class="col-md-4">
-                    <!-- inicio avatar  -->
-                    <div class="avatar">
-                        <div class="col-md-4">
-                            <img src="https://images.pexels.com/photos/716658/pexels-photo-716658.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Avatar" class="avatar__img">
-                        </div>  
-                        
-                        <div class="col-md-8">
-                            <h2 class="c__client">Wesley Sousa</h2>
-                            <small class="c__date">02/11/2019</small>    
-                            <div class="mt-1">
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                            </div>
-                        </div>
-                        <!-- fim avatar  -->
-                    </div>
-                    <!-- fim da coluna  -->
-                </div>
-            
-                <div class="col-md-8 " style="margin-top:2rem;">
-                    <p class="c__commits">
-                        UAU! Muito foda esse PC gamer
-                        Super recomendo!! 
-                        Parabéns aos envolvidos.
-                    </p>
-                    <p class="c__commits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente earum molestiae impedit cumque, nobis provident unde expedita. Deleniti, in maxime! Illo ea vitae, eum exercitationem repellendus officiis delectus in?</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="client">
-            <div class="row">
-                <div class="col-md-4">
-                    <!-- inicio avatar  -->
-                    <div class="avatar">
-                        <div class="col-md-4">
-                            <img src="https://images.pexels.com/photos/3127364/pexels-photo-3127364.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Avatar" class="avatar__img">
-                        </div>  
-                        
-                        <div class="col-md-8">
-                            <h2 class="c__client">Leandro Ferreira</h2>
-                            <small class="c__date">02/11/2019</small>    
-                            <div class="mt-1">
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                                <span><i class="fas fa-star"></i></span>
-                            </div>
-                        </div>
-                        <!-- fim avatar  -->
-                    </div>
-                    <!-- fim da coluna  -->
-                </div>
-            
-                <div class="col-md-8 " style="margin-top:2rem;">
-                    <p class="c__commits">
-                        Esse site ta muito foda! 
-                        Parabéns aos envolvidos.
-                    </p>
-                    <p class="c__commits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente earum molestiae impedit cumque, nobis provident unde expedita. Deleniti, in maxime! Illo ea vitae, eum exercitationem repellendus officiis delectus in?</p>
-                </div>
-            </div>
-        </section>
-
+<div class="container">
+    <div class="col-md-12">
+            <h1 class="c__title">Reviews</h1>
     </div>
+    <section class="client">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- inicio avatar  -->
+                <div class="avatar">
+                    <div class="col-md-4">
+                        <img src="/public/img/me.png" alt="Avatar" class="avatar__img">
+                    </div>  
+                    
+                    <div class="col-md-8">
+                        <h2 class="c__client">Marcos Vinicius</h2>
+                        <small class="c__date">02/11/2019</small>    
+                        <div class="mt-1">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                        </div>
+                    </div>
+                    <!-- fim avatar  -->
+                </div>
+                <!-- fim da coluna  -->
+            </div>
+        
+            <div class="col-md-8 " style="margin-top:2rem;">
+                <p class="c__commits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente earum molestiae impedit cumque, nobis provident unde expedita. Deleniti, in maxime! Illo ea vitae, eum exercitationem repellendus officiis delectus in?</p>
+                <p class="c__commits">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, dolorum quod! Debitis, maiores aperiam. Non velit reiciendis sint nobis vel perferendis sit animi, illum ipsum? Accusantium officiis eos ducimus quisquam?</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="client">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- inicio avatar  -->
+                    <div class="avatar">
+                        <div class="col-md-4">
+                            <img src="/public/img/paulo.jpg" alt="Avatar" class="avatar__img">
+                        </div>  
+                        
+                        <div class="col-md-8">
+                            <h2 class="c__client">Paulo Teixeira</h2>
+                            <small class="c__date">02/11/2019</small>    
+                            <div class="mt-1">
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="fas fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                                <span><i class="far fa-star"></i></span>
+                            </div>
+                        </div>
+                        <!-- fim avatar  -->
+                    </div>
+                    <!-- fim da coluna  -->
+                </div>
+            
+                <div class="col-md-8 " style="margin-top:2rem;">
+                    <p class="c__commits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente earum molestiae impedit cumque, nobis provident unde expedita. Deleniti, in maxime! Illo ea vitae, eum exercitationem repellendus officiis delectus in?</p>
+                    <p class="c__commits">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, dolorum quod! Debitis, maiores aperiam. Non velit reiciendis sint nobis vel perferendis sit animi, illum ipsum? Accusantium officiis eos ducimus quisquam?</p>
+                </div>
+            </div>
+    </section>
+
+    <section class="client">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- inicio avatar  -->
+                <div class="avatar">
+                    <div class="col-md-4">
+                        <img src="/public/img/wesley.jpg" alt="Avatar" class="avatar__img">
+                    </div>  
+                    
+                    <div class="col-md-8">
+                        <h2 class="c__client">Wesley Sousa</h2>
+                        <small class="c__date">02/11/2019</small>    
+                        <div class="mt-1">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                            <span><i class="far fa-star"></i></span>
+                        </div>
+                    </div>
+                    <!-- fim avatar  -->
+                </div>
+                <!-- fim da coluna  -->
+            </div>
+        
+            <div class="col-md-8 " style="margin-top:2rem;">
+                <p class="c__commits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente earum molestiae impedit cumque, nobis provident unde expedita. Deleniti, in maxime! Illo ea vitae, eum exercitationem repellendus officiis delectus in?</p>
+                <p class="c__commits">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, dolorum quod! Debitis, maiores aperiam. Non velit reiciendis sint nobis vel perferendis sit animi, illum ipsum? Accusantium officiis eos ducimus quisquam?</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="client">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- inicio avatar  -->
+                <div class="avatar">
+                    <div class="col-md-4">
+                        <img src="/public/img/leandro.jpg" alt="Avatar" class="avatar__img">
+                    </div>  
+                    
+                    <div class="col-md-8">
+                        <h2 class="c__client">Leandro Ferreira</h2>
+                        <small class="c__date">02/11/2019</small>    
+                        <div class="mt-1">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                        </div>
+                    </div>
+                    <!-- fim avatar  -->
+                </div>
+                <!-- fim da coluna  -->
+            </div>
+        
+            <div class="col-md-8 " style="margin-top:2rem;">
+                <p class="c__commits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente earum molestiae impedit cumque, nobis provident unde expedita. Deleniti, in maxime! Illo ea vitae, eum exercitationem repellendus officiis delectus in?</p>
+                <p class="c__commits">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, dolorum quod! Debitis, maiores aperiam. Non velit reiciendis sint nobis vel perferendis sit animi, illum ipsum? Accusantium officiis eos ducimus quisquam?</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="client">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- inicio avatar  -->
+                <div class="avatar">
+                    <div class="col-md-4">
+                        <img src="/public/img/lucas.jpg" alt="Avatar" class="avatar__img">
+                    </div>  
+                    
+                    <div class="col-md-8">
+                        <h2 class="c__client">Lucas Lira</h2>
+                        <small class="c__date">02/11/2019</small>    
+                        <div class="mt-1">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                        </div>
+                    </div>
+                    <!-- fim avatar  -->
+                </div>
+                <!-- fim da coluna  -->
+            </div>
+        
+            <div class="col-md-8 " style="margin-top:2rem;">
+                <p class="c__commits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente earum molestiae impedit cumque, nobis provident unde expedita. Deleniti, in maxime! Illo ea vitae, eum exercitationem repellendus officiis delectus in?</p>
+                <p class="c__commits">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, dolorum quod! Debitis, maiores aperiam. Non velit reiciendis sint nobis vel perferendis sit animi, illum ipsum? Accusantium officiis eos ducimus quisquam?</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="client">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- inicio avatar  -->
+                <div class="avatar">
+                    <div class="col-md-4">
+                        <img src="/public/img/raylson.jpeg" alt="Avatar" class="avatar__img">
+                    </div>  
+                    
+                    <div class="col-md-8">
+                        <h2 class="c__client">Raylson </h2>
+                        <small class="c__date">02/11/2019</small>    
+                        <div class="mt-1">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                        </div>
+                    </div>
+                    <!-- fim avatar  -->
+                </div>
+                <!-- fim da coluna  -->
+            </div>
+        
+            <div class="col-md-8 " style="margin-top:2rem;">
+                <p class="c__commits">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam sapiente earum molestiae impedit cumque, nobis provident unde expedita. Deleniti, in maxime! Illo ea vitae, eum exercitationem repellendus officiis delectus in?</p>
+                <p class="c__commits">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis, dolorum quod! Debitis, maiores aperiam. Non velit reiciendis sint nobis vel perferendis sit animi, illum ipsum? Accusantium officiis eos ducimus quisquam?</p>
+            </div>
+        </div>
+    </section>
+
+</div>
 </section>
+
 
 <script>
     window.onload = function () {
