@@ -11,6 +11,10 @@ const User = mongoose.Schema({
         type: String,
         required: true,
     },
+    sobrenome: {
+        type: String,
+        required: true,
+    },
     senha: {
         type: String,
         required: true,
@@ -18,6 +22,14 @@ const User = mongoose.Schema({
     nivel: {
         type: Number,
         required: false,
+    },
+    endereco: {
+        type: String,
+        required: true,
+    },
+    telefone: {
+        type: String,
+        required: true,
     },
 })
 

@@ -22,8 +22,11 @@ module.exports = (passport) => {
             if(!userExit) {
                 let user = new User({
                     email: req.body.email,
-                    nome: req.body.name,
-                    senha: req.body.password
+                    nome: req.body.nome,
+                    sobrenome: req.body.sobrenomename,
+                    senha: req.body.password,
+                    endereco: req.body.endereco,
+                    telefone: req.body.telefone,
                 })
                 user.senha = user.genHash(user.senha)
 
