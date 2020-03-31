@@ -22,7 +22,7 @@ app.use('/files', express.static( __dirname+'/uploads' ))
 
 //SESSION
 app.use(session({
-    secret: '!@$#%@@#asd',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }))
