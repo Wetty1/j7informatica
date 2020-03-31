@@ -43,75 +43,74 @@
             <h1>Complete os seus dados</h1>
         </div>
 
-        <form action="#" method="#" id="r-form">
+        <form action="/user/register" method="POST" id="r-form">
 
             <div class="row">
                 <div class="col-md-6">
                     <div class="r-info">
-                        <input type="text">
+                        <input name="nome" type="text">
                         <span data-placeholder="Nome"></span>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="r-info">
-                        <input type="text">
+                        <input name="sobrenomename" type="text">
                         <span data-placeholder="Sobrenome"></span>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="r-info">
-                        <input type="email">
+                        <input name="email" type="email">
                         <span data-placeholder="E-mail"></span>
                     </div>
                 </div>
                 
                 <div class="col-md-6">
                     <div class="r-info">
-                        <input type="password" name="" id="">
+                        <input name="password" type="password" name="" id="">
                         <span data-placeholder="Senha"></span>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="r-info">
-                        <input type="text">
+                        <input name="telefone" type="text">
                         <span data-placeholder="Telefone"></span>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="r-info">
-                        <input type="text">
+                        <input name="endereco" type="text">
                         <span data-placeholder="Endereço"></span>
                     </div>
                 </div>
 
                 <!-- fim da linha  -->
             </div>
-        </form>
-
-        <div class="statement"> 
-            <button class="btn btn-efect">Criar conta</button>
-           
-            <div class="col-md-6">
-                <p class="term__text">
-                    Ver o <a href="#">
-                        contrato 
-                    </a>
-                    do J7 e-shop
-                </p>
-                <p class="term__text">
-                    Ao cadastrar-me, declaro que sou maior de idade e aceito as
-                    <a href="#"> Políticas de privacidade</a>
-                    e os 
-                    <a href="#"> Termos e condições do J7 e-shop</a>
-                    e 
-                    <a href="#">Mercado Pago j7.</a>
-                </p>
+            <div class="statement"> 
+                <button type="submit" class="btn btn-efect">Criar conta</button>
+            
+                <div class="col-md-6">
+                    <p class="term__text">
+                        Ver o <a href="#">
+                            contrato 
+                        </a>
+                        do J7 e-shop
+                    </p>
+                    <p class="term__text">
+                        Ao cadastrar-me, declaro que sou maior de idade e aceito as
+                        <a href="#"> Políticas de privacidade</a>
+                        e os 
+                        <a href="#"> Termos e condições do J7 e-shop</a>
+                        e 
+                        <a href="#">Mercado Pago j7.</a>
+                    </p>
+                </div>
             </div>
-        </div>
+        </form>
     </section>
 
     <footer id="footer">

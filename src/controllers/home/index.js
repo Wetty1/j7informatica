@@ -132,7 +132,7 @@ router.get('/meuspedidos', async (req, res) => {
         return
     }
     const { _id } = req.user
-    const compras = await Compra.find({usuario: _id})
+    const compras = await Compra.find({usuario: _id}).populate('usuario')
 
     console.log(compras)
 
