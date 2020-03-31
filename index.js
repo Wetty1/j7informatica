@@ -6,6 +6,7 @@ const session = require('express-session')
 const passport = require('passport')
 const hbs = require('express-handlebars')
 const methodOverride = require('method-override')
+require('dotenv').config()
 
 const app = express()
 
@@ -41,7 +42,7 @@ require('./src/auth/middleware')
 require('./src/routes')(app, passport)
 
 //mongoose
-mongoose.connect('mongodb+srv://user:user@cluster0-0v0b4.mongodb.net/j7info?retryWrites=true&w=majority', {
+mongoose.connect(process.env.DB_LINK, {
     useNewUrlParser: true, 
     useUnifiedTopology: true
 }).then(() => console.log("Conectado ao banco de dados!")).catch(error => console.log(error))
